@@ -7,24 +7,20 @@ import java.time.format.DateTimeFormatter;
 public class Repository {
     ArrayList<Article> articles = new ArrayList<Article>();
 
-    private int index;
-
     private String path;
 
     /**
      * Repository Construcor
-     * @param Path to the txt file containing text to parse
+     * @param Path to the txt file containing text to parse (better to use with path)
      */
     public Repository(String _path){
         this.path = _path;
-        this.index = 0;
     }
     /**
      * no arg Constructor for Repository Class
      */
     public Repository(){
         this.path = "\\.";
-        this.index = 0;
     }
     /**
      * Copy Constructor for Repostiry class
@@ -32,7 +28,6 @@ public class Repository {
      */
     public Repository(Repository repo){
         this.path = repo.path;
-        this.index = repo.index;
     }
 
     //wtf is this throws exception
@@ -42,11 +37,10 @@ public class Repository {
      * argument are default Article constructor args
      *      @Sidenote Article constructor argument are: Name, Author, Date, Text
      *               
-     * @param path to the txt file
      * @throws Exception of not finding the txt
      */
-    public void loadFromTxt(String _path) throws Exception{
-        File file = new File(_path); //path
+    public void loadFromTxt() throws Exception{
+        File file = new File(path); //path
         Scanner sc = new Scanner(file);     
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
@@ -68,10 +62,10 @@ public class Repository {
         sc.close();
     }
 
+    //below just for testing purposes;
     public static void main(String[] args) throws Exception {
-        Repository repo = new Repository();
-        repo.loadFromTxt("C:\\Users\\user\\Desktop\\oop_project_text.txt");
-        
+        Repository repo = new Repository(".\\articles_formatted.txt");
+        repo.loadFromTxt();
     }
     public void testPrint(){
         for (int i = 0; i < articles.size(); i++) {
