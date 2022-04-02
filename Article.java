@@ -2,9 +2,10 @@ import java.time.LocalDate;
 
 class Article{
 
-    private final static int id = 1;
+    private static int prevId = 0;
+    private final int id;
     private String nameOfArticle;
-    private LocalDate publishDate; //depricated, probably goona change soon
+    private LocalDate publishDate;
     private String author;
     private String text;
     
@@ -16,6 +17,9 @@ class Article{
         this.author = "no Author";
         this.publishDate = LocalDate.of(1000, 1, 1);
         this.text = null;
+        
+        this.id = prevId + 1;
+        prevId = this.id;
     }   
 
     /**
@@ -25,22 +29,28 @@ class Article{
      * @param Date of publishing
      * @param Text of the article itself
      */
-    public Article(String nameOfArticle_, String author_ ,LocalDate publishDate_, String text_){
-        this.nameOfArticle = nameOfArticle_;
-        this.author = author_;
-        this.publishDate = publishDate_;
-        this.text = text_;
+    public Article(String _nameOfArticle, String _author ,LocalDate _publishDate, String _text){
+        this.nameOfArticle = _nameOfArticle;
+        this.author = _author;
+        this.publishDate = _publishDate;
+        this.text = _text;
+
+        this.id = prevId + 1;
+        prevId = this.id;
     }
 
     /**
      * Copy Constructor for Article class
      * @param Article
      */
-    public Article(Article article_){
-        this.nameOfArticle = article_.nameOfArticle;
-        this.author = article_.author;
-        this.publishDate = article_.publishDate;
-        this.text = article_.text;
+    public Article(Article _article){
+        this.nameOfArticle = _article.nameOfArticle;
+        this.author = _article.author;
+        this.publishDate = _article.publishDate;
+        this.text = _article.text;
+
+        this.id = prevId + 1;
+        prevId = this.id;
     }
 
     /**
@@ -67,25 +77,31 @@ class Article{
     public String getText() {
         return text;
     }
+    /**
+     * @return ID number of the element specified.
+     */
+    public int getId() {
+        return id;
+    }
 
 
     /**
-     * @param author
+     * @param _author
      */
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setAuthor(String _author) {
+        this.author = _author;
     }
     /**
-     * @param nameOfArticle
+     * @param _nameOfArticle
      */
-    public void setNameOfArticle(String nameOfArticle) {
-        this.nameOfArticle = nameOfArticle;
+    public void setNameOfArticle(String _nameOfArticle) {
+        this.nameOfArticle = _nameOfArticle;
     }
     /**
-     * @param text
+     * @param _text
      */
-    public void setText(String text) {
-        this.text = text;
+    public void setText(String _text) {
+        this.text = _text;
     }
 
     //no setter for date; since cant be changed :)
