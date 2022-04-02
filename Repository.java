@@ -5,8 +5,9 @@ import java.util.Scanner;
 import java.time.format.DateTimeFormatter;
 
 public class Repository {
-    ArrayList<Article> articles = new ArrayList<Article>();
 
+    private ArrayList<Article> articles = new ArrayList<Article>();
+    
     private String path;
 
     /**
@@ -30,21 +31,27 @@ public class Repository {
         this.path = repo.path;
     }
 
-    //wtf is this throws exception
+    
+    public ArrayList<Article> getArticles() {
+        return new ArrayList<>(articles);
+    }
+
+    
     /**
      * Load from file from the specified path method
      * creates new article object with given arguments
      * argument are default Article constructor args
      *      @Sidenote Article constructor argument are: Name, Author, Date, Text
+     * MAKE THIS XXXML
      *               
      * @throws Exception of not finding the txt
      */
     public void loadFromTxt() throws Exception{
+
         File file = new File(path); //path
         Scanner sc = new Scanner(file);     
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
-
 
         String[] diffArticles = new String[4];
 
@@ -57,16 +64,10 @@ public class Repository {
             }
         }
 
-        testPrint();
-
         sc.close();
     }
 
-    //below just for testing purposes;
-    public static void main(String[] args) throws Exception {
-        Repository repo = new Repository(".\\articles_formatted.txt");
-        repo.loadFromTxt();
-    }
+    //this test too
     public void testPrint(){
         for (int i = 0; i < articles.size(); i++) {
             System.out.println(articles.get(i).getNameOfArticle());
@@ -75,5 +76,22 @@ public class Repository {
             System.out.println(articles.get(i).getText());
         }
         
+    }
+
+    //below just for testing purposes;
+    public static void main(String[] args) throws Exception {
+        Repository repo = new Repository(".\\articles_formatted.txt");
+        repo.loadFromTxt();
+        repo.testPrint();
+        ArrayList<Article> list = repo.getArticles();
+        System.out.println(list.size());
+
+
+
+        String[] strs = new String[28];
+        //.....
+        for(String str : strs) {
+            
+        }
     }
 }

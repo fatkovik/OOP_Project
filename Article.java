@@ -1,11 +1,12 @@
 import java.time.LocalDate;
 
 class Article{
+
+    private final static int id = 1;
     private String nameOfArticle;
     private LocalDate publishDate; //depricated, probably goona change soon
     private String author;
     private String text;
-
     
     /**
      * No arg constructor for Article Class
@@ -14,6 +15,7 @@ class Article{
         this.nameOfArticle = "void";
         this.author = "no Author";
         this.publishDate = LocalDate.of(1000, 1, 1);
+        this.text = null;
     }   
 
     /**
