@@ -1,9 +1,9 @@
 # OOP_Project
 ### CRUD Application
-## C - Create
-## R - Read
-## Update
-## Delete
+# C - Create
+# R - Read
+# U - Update
+# D - Delete
 
 ### Deadline: april 10
 
