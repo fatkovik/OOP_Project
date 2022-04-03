@@ -1,26 +1,25 @@
+import java.util.ArrayList;
+import java.util.Formatter;
+import java.io.File;
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.function.Supplier;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-
-import java.util.ArrayList;
-import java.util.Formatter;
-import java.io.File;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 
 public class Repository {
 
     private ArrayList<Article> articles = new ArrayList<Article>();
     
     private String path;
-
     /**
      * Repository Construcor
      * @param Path to the txt file containing text to parse (better to use with path)
@@ -41,7 +40,6 @@ public class Repository {
     public Repository(Repository repo){
         this.path = repo.path;
     }
-
     /**
      * getter for ArrayList of articles
      * @return arraylist of article;
@@ -50,6 +48,14 @@ public class Repository {
         return new ArrayList<>(articles);
     }
 
+    /**
+     * getter for path
+     * needed in XML parses class;
+     * @return path
+     */
+    public String getPath() {
+        return path;
+    }
 
     /**
      * parses the String formatting to actual date type
@@ -69,9 +75,6 @@ public class Repository {
         }
     }
 
-    /**
-     * reading from XML, with the default path specified in repo constructor
-     */
     public void readFromXML() throws Exception{
 
         //instantiating the factory
@@ -99,17 +102,26 @@ public class Repository {
             if(node.getNodeType() == Node.ELEMENT_NODE){
 
                 Element e = (Element) node;
-                articles.add(new Article(e.getElementsByTagName("nameOfArticle").item(0).getTextContent(),
+
+                appendToArticleList(e.getElementsByTagName("nameOfArticle").item(0).getTextContent(),
                                          e.getElementsByTagName("author").item(0).getTextContent(),
-                                         dateParse(e.getElementsByTagName("publishDate").item(0).getTextContent()),
-                                         e.getElementsByTagName("text").item(0).getTextContent()));
+                                         e.getElementsByTagName("publishDate").item(0).getTextContent(),
+                                         e.getElementsByTagName("text").item(0).getTextContent());
             }
         }
+    }    
+
+    public void writeToXML(){
+        //yes
     }
 
+    public void appendToArticleList(String _nameOfArticle, String _author, String _publishDate, String _text){
+        articles.add(new Article(_nameOfArticle, _author, dateParse(_publishDate), _text));
+    }
 
     //#region test
     public void testPrint(){
+        System.out.println(articles.size());
         for (int i = 0; i < articles.size(); i++) {
             System.out.println("");
             System.out.println(articles.get(i).getId());
