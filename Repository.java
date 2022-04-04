@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Scanner;
 
 public class Repository {
 
@@ -86,7 +87,6 @@ public class Repository {
 
     //#region test
     public void testPrint(){
-        System.out.println(articles.size());
         for (int i = 0; i < articles.size(); i++) {
             System.out.println("");
             System.out.println(articles.get(i).getId());
@@ -101,23 +101,17 @@ public class Repository {
 
     //below just for testing purposes;
     public static void main(String[] args) throws Exception {
-        //Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         Repository repo = new Repository(".\\ArticleXML1.xml");
         XMLController x = new XMLController(".\\ArticleXML1.xml");
         repo.appendToArticleList(x.readArticleFromXML());
+        repo.testPrint();
         
-        //repo.articles.get(1).setText("AHYESSSSSSSSSSSSSSSSSSSSSSSSS STHIS WORKS");
+        repo.articles.get(0).setText(sc.nextLine());
 
-        //x.writeArticleToXML(repo.articles);
-        //repo.readFromXML();
-        // repo.loadFromTxt();
-       // repo.articles.clear();
-
-        //repo.appendToArticleList(x.readArticleFromXML());
+        x.writeArticleToXML(repo.articles);
 
         repo.testPrint();
-        //ArrayList<Article> list = repo.getArticles();
-        //System.out.println(list.get(0).getId());
     }
     //#endregion
 }

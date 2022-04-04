@@ -1,41 +1,9 @@
-<articleSet>  
+<?xml version="1.0" encoding="utf-8" standalone="no"?><articleSet>        
     <article>
         <id>1</id>
         <nameOfArticle>papapm</nameOfArticle>
         <author>jir</author>
-        <publishDate>20/10/2012</publishDate>
-        <text>YEEEEEEEEEEY</text>
-    </article>
-
-    <article>
-        <id>2</id>
-        <nameOfArticle>asd</nameOfArticle>
-        <author>jir</author>
-        <publishDate>20/10/2012</publishDate>
-        <text>asdasdasd</text>
-    </article>
-
-    <article>
-        <id>3</id>
-        <nameOfArticle>pipipip</nameOfArticle>
-        <author>jir</author>
-        <publishDate>20/10/2012</publishDate>
-        <text>ghjghj</text>
-    </article>
-
-    <article>
-        <id>4</id>
-        <nameOfArticle>popopop</nameOfArticle>
-        <author>jir</author>
-        <publishDate>20/10/2012</publishDate>
-        <text>rtyrty</text>
-    </article>
-
-    <article>
-        <id>5</id>
-        <nameOfArticle>hehehhe</nameOfArticle>
-        <author>David</author>
-        <publishDate>02/04/2022</publishDate>
-        <text>hehehehhe</text>
+        <publishDate>null</publishDate>
+        <text>test numba 3</text>
     </article>
 </articleSet>

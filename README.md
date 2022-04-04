@@ -24,7 +24,7 @@
 1. Jiro - XML, I/O (How file class works with XML and I/O), Review generics
     - XML
         - [x] READ
-        - [ ] WRITE
+        - [x] WRITE
         - [ ] Bugs, Handling exceptions
     - [ ] I/O (How file class works with XML and I/O)
     - [ ] Review Generics
@@ -32,6 +32,5 @@
 2. Edgar - Comparator (Compare Articles objects by IDs, Author, Date) by IDs, Sorting (Merge Sort (in-place), Quick Sort (O(nlogn)))
 3. Tariel - Delete, Update (ArrayList functionality must be used!)
 
-### LINKS
-1. Jir 
-- https://www.baeldung.com/java-stream-filter-lambda
+# ATTENTION
+COMMENT EVERYTHING SO THAT OTHER CAN LOOK AT YOUR CODE. :D

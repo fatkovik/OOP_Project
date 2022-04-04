@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 import org.w3c.dom.Document;
@@ -9,14 +10,20 @@ import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.*;
 
 public class XMLController {
     
     private String path;
     private Document doc;
+    private File xmlFile;
 
     public XMLController(String _path){
         this.path = _path;
+        xmlFile = new File(this.path);
         try {
             docBuilder();
         } catch (Exception e) {
@@ -35,7 +42,7 @@ public class XMLController {
         //parsing the XML file here
         DocumentBuilder docBuilder = docBuilderfactory.newDocumentBuilder();
         try{
-            doc = docBuilder.parse(new File(this.path));
+            doc = docBuilder.parse(xmlFile);
         }catch(FileNotFoundException f){
             System.out.println("file not found, enter new path");
         }
@@ -100,6 +107,22 @@ public class XMLController {
                 e.getElementsByTagName("publishDate").item(0).setTextContent(articles.get(i).getPublishDate());
                 e.getElementsByTagName("text").item(0).setTextContent(articles.get(i).getText());
             }
+        }
+
+        try{
+
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+    
+            transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+            transformer.setOutputProperty(OutputKeys.ENCODING, "utf-8"); 
+
+            DOMSource domSc = new DOMSource(doc);
+            FileOutputStream fOut = new FileOutputStream(this.xmlFile);
+            transformer.transform(domSc, new StreamResult(fOut));
+
+        }catch(Exception e){
+            e.printStackTrace();
         }
     }
 }
