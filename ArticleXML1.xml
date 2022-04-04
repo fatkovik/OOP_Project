@@ -1,5 +1,6 @@
 <articleSet>  
     <article>
+        <id>1</id>
         <nameOfArticle>papapm</nameOfArticle>
         <author>jir</author>
         <publishDate>20/10/2012</publishDate>
@@ -7,6 +8,7 @@
     </article>
 
     <article>
+        <id>2</id>
         <nameOfArticle>asd</nameOfArticle>
         <author>jir</author>
         <publishDate>20/10/2012</publishDate>
@@ -14,6 +16,7 @@
     </article>
 
     <article>
+        <id>3</id>
         <nameOfArticle>pipipip</nameOfArticle>
         <author>jir</author>
         <publishDate>20/10/2012</publishDate>
@@ -21,6 +24,7 @@
     </article>
 
     <article>
+        <id>4</id>
         <nameOfArticle>popopop</nameOfArticle>
         <author>jir</author>
         <publishDate>20/10/2012</publishDate>
@@ -28,6 +32,7 @@
     </article>
 
     <article>
+        <id>5</id>
         <nameOfArticle>hehehhe</nameOfArticle>
         <author>David</author>
         <publishDate>02/04/2022</publishDate>

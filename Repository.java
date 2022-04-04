@@ -1,19 +1,7 @@
 import java.util.ArrayList;
-import java.util.Formatter;
-import java.io.File;
-import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.function.Supplier;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 
 public class Repository {
 
@@ -75,48 +63,25 @@ public class Repository {
         }
     }
 
-    public void readFromXML() throws Exception{
-
-        //instantiating the factory
-        DocumentBuilderFactory docBuilderfactory = DocumentBuilderFactory.newInstance();
-
-        //parsing the XML file here
-        DocumentBuilder docBuilder = docBuilderfactory.newDocumentBuilder();
-
-        Document doc = docBuilder.parse(new File(this.path));
-
-        //normalizing to get proper formatting
-        doc.getDocumentElement().normalize();
-
-        //printing the root element
-        System.out.println("root element: " + doc.getDocumentElement().getNodeName());
-
-        //getting the elements with tag name "article"
-        NodeList list = doc.getElementsByTagName("article");
-
-        //loop throught text and each node;
-        for (int i = 0; i < list.getLength(); i++) {
-
-            Node node = list.item(i);
-
-            if(node.getNodeType() == Node.ELEMENT_NODE){
-
-                Element e = (Element) node;
-
-                appendToArticleList(e.getElementsByTagName("nameOfArticle").item(0).getTextContent(),
-                                         e.getElementsByTagName("author").item(0).getTextContent(),
-                                         e.getElementsByTagName("publishDate").item(0).getTextContent(),
-                                         e.getElementsByTagName("text").item(0).getTextContent());
-            }
-        }
-    }    
-
-    public void writeToXML(){
-        //yes
+    /**
+     * just creates the article, formates and everything
+     * @param _nameOfArticle
+     * @param _author
+     * @param _publishDate
+     * @param _text
+     */
+    public void appendToArticleList(String _id, String _nameOfArticle, String _author, String _publishDate, String _text){
+        articles.add(new Article(_id, _nameOfArticle, _author, dateParse(_publishDate), _text));
     }
 
-    public void appendToArticleList(String _nameOfArticle, String _author, String _publishDate, String _text){
-        articles.add(new Article(_nameOfArticle, _author, dateParse(_publishDate), _text));
+    /**
+     * adds article to articles from xml
+     * @param String[][] 2d array contaiongn many articles, each with its nodes
+     */
+    public void appendToArticleList(String[][] args){
+        for (int i = 0; i < args.length; i++) {
+            articles.add(new Article(args[i][0], args[i][1], args[i][2], dateParse(args[i][3]), args[i][4]));   
+        }
     }
 
     //#region test
@@ -136,12 +101,24 @@ public class Repository {
 
     //below just for testing purposes;
     public static void main(String[] args) throws Exception {
+        //Scanner sc = new Scanner(System.in);
         Repository repo = new Repository(".\\ArticleXML1.xml");
-        repo.readFromXML();
+        XMLController x = new XMLController(".\\ArticleXML1.xml");
+        repo.appendToArticleList(x.readArticleFromXML());
+        
+        //repo.articles.get(1).setText("AHYESSSSSSSSSSSSSSSSSSSSSSSSS STHIS WORKS");
+
+        //x.writeArticleToXML(repo.articles);
+        //repo.readFromXML();
         // repo.loadFromTxt();
+       // repo.articles.clear();
+
+        //repo.appendToArticleList(x.readArticleFromXML());
+
         repo.testPrint();
         //ArrayList<Article> list = repo.getArticles();
         //System.out.println(list.get(0).getId());
     }
     //#endregion
 }
+
