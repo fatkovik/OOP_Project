@@ -21,12 +21,15 @@
 - Print all articles in the separate window
 
 ## joxovorud HIMA MENQ UNENQ ANELWU HETEVYALY, hmi ov inch a anum, 
+# boys u dont (usually) work with xml, you work with objects, 
+# if you need any functionality connected to XML, ask me :) @jiro
 1. Jiro - XML, I/O (How file class works with XML and I/O), Review generics
     - XML
         - [x] READ
         - [x] WRITE
+        - [ ] Provide utilities for boys
         - [ ] Bugs, Handling exceptions
-    - [ ] I/O (How file class works with XML and I/O)
+    - [ ] I/O (How file class works with XML and I/O) ???
     - [ ] Review Generics
     
 2. Edgar - Comparator (Compare Articles objects by IDs, Author, Date) by IDs, Sorting (Merge Sort (in-place), Quick Sort (O(nlogn)))
