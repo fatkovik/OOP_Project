@@ -3,7 +3,28 @@
         <id>1</id>
         <nameOfArticle>papapm</nameOfArticle>
         <author>jir</author>
-        <publishDate>null</publishDate>
+        <publishDate>1222-12-10</publishDate>
+        <text>test numba 3</text>
+    </article>
+    <article>
+        <id>2</id>
+        <nameOfArticle>yes yes</nameOfArticle>
+        <author>jir</author>
+        <publishDate>1222-12-10</publishDate>
+        <text>WHEN I WAS A KID I WAS PLAYING FOFOTABLA</text>
+    </article>
+    <article>
+        <id>3</id>
+        <nameOfArticle>papapm</nameOfArticle>
+        <author>jir</author>
+        <publishDate>1222-12-10</publishDate>
+        <text>test numba 3</text>
+    </article>
+    <article>
+        <id>4</id>
+        <nameOfArticle>papapm</nameOfArticle>
+        <author>jir</author>
+        <publishDate>1222-12-10</publishDate>
         <text>test numba 3</text>
     </article>
 </articleSet>

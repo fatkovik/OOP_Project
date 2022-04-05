@@ -20,7 +20,7 @@ public class XMLController {
     private String path;
     private Document doc;
     private File xmlFile;
-
+    
     public XMLController(String _path){
         this.path = _path;
         xmlFile = new File(this.path);
@@ -56,7 +56,7 @@ public class XMLController {
      * probably consumes a lot of memory
      * but i cant come up with a better method
      * maybe if i knew oop better i would of done that
-     * @return
+     * @return String 2d array, with rows as articles, and columns as article elements
      */
     public String[][] readArticleFromXML(){
 
@@ -64,7 +64,7 @@ public class XMLController {
 
         NodeList list = doc.getElementsByTagName("article");
 
-        String[][] args = new String[list.getLength()][5];
+        String[][] args = new String[list.getLength()][4];
 
         for (int i = 0; i < list.getLength(); i++) {
 
@@ -74,11 +74,10 @@ public class XMLController {
 
                 Element e = (Element) node;
 
-                args[i][0] = (e.getElementsByTagName("id").item(0).getTextContent());
-                args[i][1] = (e.getElementsByTagName("nameOfArticle").item(0).getTextContent());
-                args[i][2] = (e.getElementsByTagName("author").item(0).getTextContent());
-                args[i][3] = (e.getElementsByTagName("publishDate").item(0).getTextContent());
-                args[i][4] = (e.getElementsByTagName("text").item(0).getTextContent());
+                args[i][0] = (e.getElementsByTagName("nameOfArticle").item(0).getTextContent());
+                args[i][1] = (e.getElementsByTagName("author").item(0).getTextContent());
+                args[i][2] = (e.getElementsByTagName("publishDate").item(0).getTextContent());
+                args[i][3] = (e.getElementsByTagName("text").item(0).getTextContent());
             }
         }
         return args;

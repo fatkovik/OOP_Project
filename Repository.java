@@ -72,7 +72,7 @@ public class Repository {
      * @param _text
      */
     public void appendToArticleList(String _id, String _nameOfArticle, String _author, String _publishDate, String _text){
-        articles.add(new Article(_id, _nameOfArticle, _author, dateParse(_publishDate), _text));
+        articles.add(new Article(_nameOfArticle, _author, dateParse(_publishDate), _text));
     }
 
     /**
@@ -81,7 +81,7 @@ public class Repository {
      */
     public void appendToArticleList(String[][] args){
         for (int i = 0; i < args.length; i++) {
-            articles.add(new Article(args[i][0], args[i][1], args[i][2], dateParse(args[i][3]), args[i][4]));   
+            articles.add(new Article(args[i][0], args[i][1], dateParse(args[i][2]), args[i][3]));   
         }
     }
 
@@ -107,11 +107,9 @@ public class Repository {
         repo.appendToArticleList(x.readArticleFromXML());
         repo.testPrint();
         
-        repo.articles.get(0).setText(sc.nextLine());
+        //repo.articles.get(0).setText(sc.nextLine());
 
         x.writeArticleToXML(repo.articles);
-
-        repo.testPrint();
     }
     //#endregion
 }

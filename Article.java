@@ -2,7 +2,8 @@ import java.time.LocalDate;
 
 class Article{
 
-    private final String id;
+    private static int prevId = 0;
+    private final int ID;
     private String nameOfArticle;
     private LocalDate publishDate;
     private String author;
@@ -16,7 +17,8 @@ class Article{
         this.author = "no Author";
         this.publishDate = LocalDate.of(1000, 1, 1);
         this.text = null;
-        this.id = "0";
+        prevId++;
+        this.ID = prevId;
     }   
 
     /**
@@ -26,12 +28,13 @@ class Article{
      * @param Date of publishing
      * @param Text of the article itself
      */
-    public Article(String _id, String _nameOfArticle, String _author ,LocalDate _publishDate, String _text){
+    public Article(String _nameOfArticle, String _author ,LocalDate _publishDate, String _text){
         this.nameOfArticle = _nameOfArticle;
         this.author = _author;
         this.publishDate = _publishDate;
         this.text = _text;
-        this.id = _id;
+        prevId++;
+        this.ID = prevId;
     }
 
     /**
@@ -43,7 +46,7 @@ class Article{
         this.author = _article.author;
         this.publishDate = _article.publishDate;
         this.text = _article.text;
-        this.id = _article.id;
+        this.ID = _article.ID;
     }
 
     /**
@@ -74,7 +77,7 @@ class Article{
      * @return ID number of the element specified.
      */
     public int getId() {
-        return Integer.parseInt(id);
+        return ID;
     }
 
 
