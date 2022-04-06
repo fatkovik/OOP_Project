@@ -1,30 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?><articleSet>        
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<articleSet>
     <article>
         <id>1</id>
-        <nameOfArticle>papapm</nameOfArticle>
-        <author>jir</author>
-        <publishDate>1222-12-10</publishDate>
-        <text>test numba 3</text>
-    </article>
-    <article>
-        <id>2</id>
-        <nameOfArticle>yes yes</nameOfArticle>
-        <author>jir</author>
-        <publishDate>1222-12-10</publishDate>
-        <text>WHEN I WAS A KID I WAS PLAYING FOFOTABLA</text>
-    </article>
-    <article>
-        <id>3</id>
-        <nameOfArticle>papapm</nameOfArticle>
-        <author>jir</author>
-        <publishDate>1222-12-10</publishDate>
-        <text>test numba 3</text>
-    </article>
-    <article>
-        <id>4</id>
-        <nameOfArticle>papapm</nameOfArticle>
-        <author>jir</author>
-        <publishDate>1222-12-10</publishDate>
-        <text>test numba 3</text>
+        <nameOfArticle>edhadr</nameOfArticle>
+        <author>edadgar</author>
+        <publishDate>2021-12-12</publishDate>
+        <text>edgaaooroi</text>
     </article>
 </articleSet>

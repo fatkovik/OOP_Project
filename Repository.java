@@ -54,7 +54,7 @@ public class Repository {
      */
     public static LocalDate dateParse(String _stringDate){
         //formatter for date
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         //try catch for wrong date format to not kill the app;
         try{
             return LocalDate.parse(_stringDate, formatter);
@@ -71,7 +71,7 @@ public class Repository {
      * @param _publishDate
      * @param _text
      */
-    public void appendToArticleList(String _id, String _nameOfArticle, String _author, String _publishDate, String _text){
+    public void appendToArticleList(String _nameOfArticle, String _author, String _publishDate, String _text){
         articles.add(new Article(_nameOfArticle, _author, dateParse(_publishDate), _text));
     }
 
@@ -105,9 +105,12 @@ public class Repository {
         Repository repo = new Repository(".\\ArticleXML1.xml");
         XMLController x = new XMLController(".\\ArticleXML1.xml");
         repo.appendToArticleList(x.readArticleFromXML());
-        repo.testPrint();
+        //repo.testPrint();
         
         //repo.articles.get(0).setText(sc.nextLine());
+
+        //repo.appendToArticleList("edhadr", "edadgar", "2021-12-12", "edgaaooroi");
+        //repo.appendToArticleList("edhadr222", "edadgar222", "12/12/1553", "drthr111111111111111b");
 
         x.writeArticleToXML(repo.articles);
     }

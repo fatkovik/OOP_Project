@@ -52,6 +52,32 @@ public class XMLController {
     }
 
     /**
+     * @NOT_FOR_USE
+     * was made to create more xml nodes if the number of objects is bigger than the quantitiy of XML article's
+     */
+    private void createXmlElements(){
+        //String _id, String _nameOfArticle, String _author, String _publishDate, String _text
+        Element rootArticleSet = doc.getDocumentElement();
+
+        Element article = doc.createElement("article");
+
+        rootArticleSet.appendChild(article);
+
+        Element id = doc.createElement("id");
+        Element nameOfArticle = doc.createElement("nameOfArticle");
+        Element author = doc.createElement("author");
+        Element publishDate = doc.createElement("publishDate");
+        Element text = doc.createElement("text");
+
+
+        article.appendChild(id);
+        article.appendChild(nameOfArticle);
+        article.appendChild(author);
+        article.appendChild(publishDate);
+        article.appendChild(text);
+    }
+
+    /**
      * reads and return 2d array from given XML
      * probably consumes a lot of memory
      * but i cant come up with a better method
@@ -92,6 +118,13 @@ public class XMLController {
 
         NodeList list = doc.getElementsByTagName("article");
 
+        if(list.getLength() < articles.size()){
+            for (int i = list.getLength(); i < articles.size(); i++) {
+                createXmlElements();
+            }
+        }
+
+
         for (int i = 0; i < list.getLength(); i++) {
 
             Node node = list.item(i);
@@ -112,9 +145,10 @@ public class XMLController {
 
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
-    
+
             transformer.setOutputProperty(OutputKeys.METHOD, "xml");
             transformer.setOutputProperty(OutputKeys.ENCODING, "utf-8"); 
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 
             DOMSource domSc = new DOMSource(doc);
             FileOutputStream fOut = new FileOutputStream(this.xmlFile);
