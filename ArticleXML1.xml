@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <articleSet>
     <article>
-        <id>1</id>
-        <nameOfArticle>edhadr</nameOfArticle>
-        <author>edadgar</author>
-        <publishDate>2021-12-12</publishDate>
-        <text>edgaaooroi</text>
+        <id>3</id>
+        <title>Title 3</title>
+        <author>Author 3</author>
+        <publishDate>1269-12-29</publishDate>
+        <content>Content 3</content>
     </article>
 </articleSet>

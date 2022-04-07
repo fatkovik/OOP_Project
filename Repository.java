@@ -8,6 +8,8 @@ public class Repository {
 
     private ArrayList<Article> articles = new ArrayList<Article>();
     
+    public XMLController xmlController;
+
     private String path;
     /**
      * Repository Construcor
@@ -15,19 +17,24 @@ public class Repository {
      */
     public Repository(String _path){
         this.path = _path;
+        xmlController = new XMLController(this.path);
     }
     /**
      * no arg Constructor for Repository Class
      */
     public Repository(){
         this.path = "\\.";
+        this.articles = new ArrayList<>();
+        xmlController = new XMLController(this.path);
     }
     /**
-     * Copy Constructor for Repostiry class
-     * @param Repository
+     * Copy Constructor for Repository class
+     * @param other Repository containing articles
      */
-    public Repository(Repository repo){
-        this.path = repo.path;
+    public Repository(Repository other){
+        this.path = other.path;
+        this.articles = new ArrayList<>(other.articles);
+        xmlController = new XMLController(other.path);
     }
     /**
      * getter for ArrayList of articles
@@ -59,60 +66,81 @@ public class Repository {
         try{
             return LocalDate.parse(_stringDate, formatter);
         }catch(DateTimeParseException t){
-            System.out.println("Time formatting wrong in input");
+            System.out.println("Time Formatting is wrong in Input!");
+            System.out.println("Make sure to use \"yyyy/MM/dd\" format");
             return null;
         }
     }
 
     /**
-     * just creates the article, formates and everything
-     * @param _nameOfArticle
-     * @param _author
-     * @param _publishDate
-     * @param _text
-     */
-    public void appendToArticleList(String _nameOfArticle, String _author, String _publishDate, String _text){
-        articles.add(new Article(_nameOfArticle, _author, dateParse(_publishDate), _text));
+    * Creates and Adds an article to the repository (given all instance variables)
+    * @param nameOfArticle Name of the Article
+    * @param author Name of the Author
+    * @param publishDate The publication Date
+    * @param content The contents of the Article
+    */
+    public void appendToRepository(String _title, String _author, String _publishDate, String _content){
+        articles.add(new Article(_title, _author, dateParse(_publishDate), _content));
     }
 
     /**
-     * adds article to articles from xml
-     * @param String[][] 2d array contaiongn many articles, each with its nodes
+     * Adds articles from the XML file to the Repository
+     * @param args 2D Array created from the XML file containing article information
      */
-    public void appendToArticleList(String[][] args){
+
+    public void appendToRepository(String[][] args){
         for (int i = 0; i < args.length; i++) {
             articles.add(new Article(args[i][0], args[i][1], dateParse(args[i][2]), args[i][3]));   
         }
     }
 
+    /**
+     * Adds a given Article to the repository
+     * @param article of Article type
+     */
+
+    public void appendToRepository(Article article){
+        articles.add(article);
+    }
+
+    /**
+     * Removes an article with the given ID
+     * @param index the ID of the article you want remove
+     */
+
+    public void removeArticle(int index) {
+        articles.remove(index - 1);
+    }
+
+
     //#region test
-    public void testPrint(){
+    /**
+     * Modifies the Article with the given ID and parameters
+     * @param index the ID of the article you want modify
+     * @TODO: UPDAT METHOD, ADD OVERLOADS, MAKE IT WOKR WITH ID AND TITLE ONLY AND CHANGE THE GIVEN PARAMETER.
+     */
+
+    public void modify (int index, String title, String author, String date, String content) {
+        System.out.println("ID: " + articles.get(index - 1).getId());
+        articles.get(index - 1).setTitle(title);
+        articles.get(index - 1).setAuthor(author);
+        articles.get(index - 1).setPublishDate(dateParse(date));
+        articles.get(index - 1).setContent(content);
+    }
+
+
+
+    public void print(){
         for (int i = 0; i < articles.size(); i++) {
             System.out.println("");
             System.out.println(articles.get(i).getId());
-            System.out.println(articles.get(i).getNameOfArticle());
+            System.out.println(articles.get(i).getTitle());
             System.out.println(articles.get(i).getAuthor());
             System.out.println(articles.get(i).getPublishDate());
-            System.out.println(articles.get(i).getText());
+            System.out.println(articles.get(i).getContent());
             System.out.println("");
         }
         
-    }
-
-    //below just for testing purposes;
-    public static void main(String[] args) throws Exception {
-        Scanner sc = new Scanner(System.in);
-        Repository repo = new Repository(".\\ArticleXML1.xml");
-        XMLController x = new XMLController(".\\ArticleXML1.xml");
-        repo.appendToArticleList(x.readArticleFromXML());
-        //repo.testPrint();
-        
-        //repo.articles.get(0).setText(sc.nextLine());
-
-        //repo.appendToArticleList("edhadr", "edadgar", "2021-12-12", "edgaaooroi");
-        //repo.appendToArticleList("edhadr222", "edadgar222", "12/12/1553", "drthr111111111111111b");
-
-        x.writeArticleToXML(repo.articles);
     }
     //#endregion
 }

@@ -16,6 +16,10 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.*;
 
 public class XMLController {
+
+    //TASKS, 
+        //remove xml article
+        //fix spaces.
     
     private String path;
     private Document doc;
@@ -33,7 +37,7 @@ public class XMLController {
 
     /**
      * method to initialize the document, and document builders
-     * not for use;
+     * @NOT_FOR_USE
      * @throws Exception
      */
     private void docBuilder() throws Exception{
@@ -64,17 +68,17 @@ public class XMLController {
         rootArticleSet.appendChild(article);
 
         Element id = doc.createElement("id");
-        Element nameOfArticle = doc.createElement("nameOfArticle");
+        Element title = doc.createElement("title");
         Element author = doc.createElement("author");
         Element publishDate = doc.createElement("publishDate");
-        Element text = doc.createElement("text");
+        Element content = doc.createElement("content");
 
 
         article.appendChild(id);
-        article.appendChild(nameOfArticle);
+        article.appendChild(title);
         article.appendChild(author);
         article.appendChild(publishDate);
-        article.appendChild(text);
+        article.appendChild(content);
     }
 
     /**
@@ -86,7 +90,7 @@ public class XMLController {
      */
     public String[][] readArticleFromXML(){
 
-        System.out.println("root element: " + doc.getDocumentElement().getNodeName());
+        System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
 
         NodeList list = doc.getElementsByTagName("article");
 
@@ -100,10 +104,10 @@ public class XMLController {
 
                 Element e = (Element) node;
 
-                args[i][0] = (e.getElementsByTagName("nameOfArticle").item(0).getTextContent());
+                args[i][0] = (e.getElementsByTagName("title").item(0).getTextContent());
                 args[i][1] = (e.getElementsByTagName("author").item(0).getTextContent());
                 args[i][2] = (e.getElementsByTagName("publishDate").item(0).getTextContent());
-                args[i][3] = (e.getElementsByTagName("text").item(0).getTextContent());
+                args[i][3] = (e.getElementsByTagName("content").item(0).getTextContent());
             }
         }
         return args;
@@ -113,8 +117,10 @@ public class XMLController {
      * Given the modified arraylist, saves the changes into the file
      * @param articles arraylist containing articles
      */
-    public void writeArticleToXML(ArrayList<Article> articles){
-        System.out.println("appending document with modified content");
+    public void writeArticleToXML(Repository repo){
+        ArrayList<Article> articles = repo.getArticles();
+
+        System.out.println("Appending document with modified content");
 
         NodeList list = doc.getElementsByTagName("article");
 
@@ -134,10 +140,10 @@ public class XMLController {
                 Element e = (Element) node;
 
                 e.getElementsByTagName("id").item(0).setTextContent(String.valueOf(articles.get(i).getId()));
-                e.getElementsByTagName("nameOfArticle").item(0).setTextContent(articles.get(i).getNameOfArticle());
+                e.getElementsByTagName("title").item(0).setTextContent(articles.get(i).getTitle());
                 e.getElementsByTagName("author").item(0).setTextContent(articles.get(i).getAuthor());
                 e.getElementsByTagName("publishDate").item(0).setTextContent(articles.get(i).getPublishDate());
-                e.getElementsByTagName("text").item(0).setTextContent(articles.get(i).getText());
+                e.getElementsByTagName("content").item(0).setTextContent(articles.get(i).getContent());
             }
         }
 
