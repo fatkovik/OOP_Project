@@ -11,10 +11,10 @@ public class ComparatorForSort <T extends Comparable<? super T>> {
             List<T> left = new ArrayList<T>();
             List<T> right = new ArrayList<T>();
 
-            int middle = list.size() / 2; //int division
-            for (int i = 0; i < middle; i++)
+            int divide = list.size() / 2;
+            for (int i = 0; i < divide; i++)
                 left.add(list.get(i));
-            for (int i = middle; i < list.size(); i++)
+            for (int i = divide; i < list.size(); i++)
                 right.add(list.get(i));
 
             return merge(mergesort(left), mergesort(right));
@@ -23,29 +23,31 @@ public class ComparatorForSort <T extends Comparable<? super T>> {
 
     //used by mergesort to do merging
     private List<T> merge(List<T> a, List<T> b) {
-        List<T> ret = new ArrayList<T>();    
-        int a_idx = 0, b_idx = 0;            
+        List<T> sortedList = new ArrayList<T>();
+        int leftIterator = 0, rightIterator = 0;
 
-        while (a_idx + 1 <= a.size() || b_idx + 1 <= b.size())
-            if (a_idx + 1 <= a.size() && b_idx + 1 <= b.size()) {
-                if (a.get(a_idx).compareTo(b.get(b_idx)) <= 0.0) {
-                    ret.add(a.get(a_idx));
-                    a_idx++;
+        while (leftIterator + 1 <= a.size() || rightIterator + 1 <= b.size())
+            if (leftIterator + 1 <= a.size() && rightIterator + 1 <= b.size()) {
+                if (a.get(leftIterator).compareTo(b.get(rightIterator)) <= 0.0) {
+                    sortedList.add(a.get(leftIterator));
+                    leftIterator++;
                 } else {
-                    ret.add(b.get(b_idx));
-                    b_idx++;
+                    sortedList.add(b.get(rightIterator));
+                    rightIterator++;
                 }
-            } else if (a_idx + 1 <= a.size()) {
-                ret.add(a.get(a_idx));
-                a_idx++;
-            } else if (b_idx + 1 <= b.size()) {
-                ret.add(b.get(b_idx));
-                b_idx++;
+            } else if (leftIterator + 1 <= a.size()) {
+                sortedList.add(a.get(leftIterator));
+                leftIterator++;
+            } else if (rightIterator + 1 <= b.size()) {
+                sortedList.add(b.get(rightIterator));
+                rightIterator++;
             }
 
-        return ret;
+        return sortedList;
     }
     public static void main(String[] args) {
+
+        //Testing Center
         ComparatorForSort<Integer> p1 = new ComparatorForSort<>();
 
         ArrayList<Integer> l1 = new ArrayList<>();
