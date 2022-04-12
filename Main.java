@@ -11,11 +11,10 @@ public class Main {
 
         //repo.appendToRepository("Title 3", "Author 3", "1269-12-29", "Content 3");
 
-        repo.removeArticle(1);
-
         repo.xmlController.writeArticleToXML(repo);
 
         System.out.println();
         repo.print();
+        input.close();
     }
 }

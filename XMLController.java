@@ -15,6 +15,11 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.*;
 
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+
 public class XMLController {
 
     //TASKS, 
@@ -33,6 +38,13 @@ public class XMLController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+    public String getPath() {
+        return path;
     }
 
     /**
@@ -113,6 +125,22 @@ public class XMLController {
         return args;
     }   
 
+
+    private void removeEmptyWhitespaces(){
+        //deleteing the whitespaces after each itration of overriding
+        try{
+            XPath xp = XPathFactory.newInstance().newXPath();
+            NodeList nl = (NodeList) xp.evaluate("//text()[normalize-space(.)='']", doc, XPathConstants.NODESET);
+
+            for (int i=0; i < nl.getLength(); ++i) {
+                Node node = nl.item(i);
+                node.getParentNode().removeChild(node);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+    }
     /**
      * Given the modified arraylist, saves the changes into the file
      * @param articles arraylist containing articles
@@ -151,6 +179,8 @@ public class XMLController {
 
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
+
+            removeEmptyWhitespaces();
 
             transformer.setOutputProperty(OutputKeys.METHOD, "xml");
             transformer.setOutputProperty(OutputKeys.ENCODING, "utf-8"); 

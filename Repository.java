@@ -1,41 +1,34 @@
 import java.util.ArrayList;
+import java.nio.ReadOnlyBufferException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
-public class Repository {
+public class Repository{
 
     private ArrayList<Article> articles = new ArrayList<Article>();
     
     public XMLController xmlController;
-
-    private String path;
     /**
      * Repository Construcor
      * @param Path to the txt file containing text to parse (better to use with path)
      */
     public Repository(String _path){
-        this.path = _path;
-        xmlController = new XMLController(this.path);
+        xmlController = new XMLController(_path);
     }
     /**
      * no arg Constructor for Repository Class
      */
     public Repository(){
-        this.path = "\\.";
-        this.articles = new ArrayList<>();
-        xmlController = new XMLController(this.path);
+        xmlController = new XMLController("\\.");
     }
-    /**
-     * Copy Constructor for Repository class
-     * @param other Repository containing articles
-     */
-    public Repository(Repository other){
-        this.path = other.path;
-        this.articles = new ArrayList<>(other.articles);
-        xmlController = new XMLController(other.path);
-    }
+    // /**
+    //  * Copy Constructor for Repository class
+    //  * @param other Repository containing articles
+    //  */
+    // public Repository(Repository other){
+    // }
     /**
      * getter for ArrayList of articles
      * @return arraylist of article;
@@ -50,7 +43,7 @@ public class Repository {
      * @return path
      */
     public String getPath() {
-        return path;
+        return xmlController.getPath();
     }
 
     /**
