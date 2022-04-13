@@ -6,7 +6,7 @@
 ### U - Update
 ### D - Delete
 
-# Deadline: april 10
+# Deadline: april 15 for those tasks.
 
 ## STAGES
 1. Console app
@@ -20,20 +20,26 @@
 - Update old articles thd. GUI (updates must be visiable in the XML file)
 - Print all articles in the separate window
 
-## joxovorud HIMA MENQ UNENQ ANELWU HETEVYALY, hmi ov inch a anum, 
 # boys u dont (usually) work with xml, you work with objects, 
 # if you need any functionality connected to XML, ask me :) @jiro
 1. Jiro - XML, I/O (How file class works with XML and I/O), Review generics
     - XML
         - [x] READ
         - [x] WRITE
-        - [ ] Provide utilities for boys
+        - [x] Provide utilities for boys (partially complete)
         - [ ] Bugs, Handling exceptions
-    - [ ] I/O (How file class works with XML and I/O) ???
-    - [ ] Review Generics
+    - [ ] Review Generics ?
+    - [ ] Same XML but with TXT.
     
-2. Edgar - Comparator (Compare Articles objects by IDs, Author, Date) by IDs, Sorting (Merge Sort (in-place), Quick Sort (O(nlogn)))
-3. Tariel - Delete, Update (ArrayList functionality must be used!)
-
-# ATTENTION
-COMMENT EVERYTHING SO THAT OTHER CAN LOOK AT YOUR CODE. :D
+2. Edgar:
+    - Implement comporator
+        - [ ] Actuallu usable.
+        - [ ] Write the additional method in Repo to acieve this.
+        - [ ] Make it work with Title, Author, Date, Content.
+        - [ ] Kinda make it abstract.
+3. Tariel:
+    - CMD
+        - [ ] Make all the methods and functionality accesible with interface.
+        - [ ] I/O, make interface.
+        - [ ] Change, Update, Delete of articles.
+        - [ ] Basic Functionality.
