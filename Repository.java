@@ -1,15 +1,16 @@
 import java.util.ArrayList;
-import java.nio.ReadOnlyBufferException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.Scanner;
+import java.util.Comparator;
 
 public class Repository{
 
     private ArrayList<Article> articles = new ArrayList<Article>();
     
     public XMLController xmlController;
+
+//    public ComparatorForSort<Article> comaparator;
     /**
      * Repository Construcor
      * @param Path to the txt file containing text to parse (better to use with path)
@@ -21,7 +22,7 @@ public class Repository{
      * no arg Constructor for Repository Class
      */
     public Repository(){
-        xmlController = new XMLController("\\.");
+        xmlController = new XMLController(".\\");
     }
     // /**
     //  * Copy Constructor for Repository class
@@ -121,8 +122,6 @@ public class Repository{
         articles.get(index - 1).setContent(content);
     }
 
-
-
     public void print(){
         for (int i = 0; i < articles.size(); i++) {
             System.out.println("");
@@ -133,7 +132,21 @@ public class Repository{
             System.out.println(articles.get(i).getContent());
             System.out.println("");
         }
-        
+    }
+
+    public void printRepositories() {
+
+    }
+
+    public void sortByTitle() {
+        articles.sort(new Comparator<Article>() {
+            @Override
+            public int compare(Article o1, Article o2) {
+                return o1.getTitle().compareTo(o2.getTitle());
+            }
+        });
+        print();
+        //make thjis shit to return zanghvac
     }
     //#endregion
 }

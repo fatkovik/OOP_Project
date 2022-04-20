@@ -140,5 +140,12 @@ class Article{
             this.publishDate = date;
         }
     }
-
+    public void print() {
+        System.out.println();
+        System.out.println("ID: " + this.ID);
+        System.out.println("Title: " + this.title);
+        System.out.println("Publication Date: " + (this.publishDate));
+        System.out.println("Author: " + this.author);
+        System.out.println("Content: " + this.content);
+    }
 }
