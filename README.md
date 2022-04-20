@@ -33,9 +33,9 @@
     
 2. Edgar:
     - Implement comporator
-        - [ ] Actuallu usable.
-        - [ ] Write the additional method in Repo to acieve this.
-        - [ ] Make it work with Title, Author, Date, Content.
+        - [x] Actuallu usable.
+        - [x] Write the additional method in Repo to acieve this.
+        - [x] Make it work with Title, Author, Date, Content.
         - [ ] Kinda make it abstract.
 3. Tariel:
     - CMD
