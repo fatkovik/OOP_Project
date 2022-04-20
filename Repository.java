@@ -1,3 +1,5 @@
+import java.sql.Array;
+import java.time.chrono.ChronoLocalDate;
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -111,7 +113,7 @@ public class Repository{
     /**
      * Modifies the Article with the given ID and parameters
      * @param index the ID of the article you want modify
-     * @TODO: UPDAT METHOD, ADD OVERLOADS, MAKE IT WOKR WITH ID AND TITLE ONLY AND CHANGE THE GIVEN PARAMETER.
+     * @TODO: UPDATE METHOD, ADD OVERLOADS, MAKE IT WORK WITH ID AND TITLE ONLY AND CHANGE THE GIVEN PARAMETER.
      */
 
     public void modify (int index, String title, String author, String date, String content) {
@@ -138,6 +140,9 @@ public class Repository{
 
     }
 
+    /**
+     * Sorts <code>Title</code> with compareTo()
+     */
     public void sortByTitle() {
         articles.sort(new Comparator<Article>() {
             @Override
@@ -145,8 +150,30 @@ public class Repository{
                 return o1.getTitle().compareTo(o2.getTitle());
             }
         });
-        print();
-        //make thjis shit to return zanghvac
+    }
+    /**
+     * Sorts <code>Author</code> with compareTo()
+     */
+    public void sortByAuthor() {
+        articles.sort(new Comparator<Article>() {
+            @Override
+            public int compare(Article o1, Article o2) {
+                return o1.getAuthor().compareTo(o2.getAuthor());
+            }
+        });
+    }
+    /**
+     * Sorts <code>Publish Date</code> with compareTo()
+     * "Doesn't Work Now"
+     */
+    public void sortByDate() {
+
+        articles.sort(new Comparator<Article>() {
+            @Override
+            public int compare(Article o1, Article o2) {
+                return o1.getPublishDateTypeLocalDate().compareTo(o2.getPublishDateTypeLocalDate());
+            }
+        });
     }
     //#endregion
 }

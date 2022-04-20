@@ -7,16 +7,30 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws Exception {
+        //TESTING GROUND
         Scanner input = new Scanner(System.in);
         Repository repo = new Repository("./ArticleXML1.xml");
 
         repo.appendToRepository(repo.xmlController.readArticleFromXML());
 
+        System.out.println("Normal---------------------");
         repo.print();
 
-        System.out.println("-------------------------");
+        System.out.println("Title---------------------");
 
         repo.sortByTitle();
+        repo.print();
+
+        System.out.println("Author---------------------");
+
+        repo.sortByAuthor();
+        repo.print();
+
+        System.out.println("Date---------------------");
+
+        repo.sortByDate();
+        repo.print();
+
         repo.xmlController.writeArticleToXML(repo);
 
 //        for (Element element : list) {
