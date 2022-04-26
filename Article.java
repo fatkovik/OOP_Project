@@ -1,8 +1,6 @@
 import java.time.LocalDate;
 
 class Article{
-    private static int prevId = 0;
-    private final int ID;
     private String title;
     private LocalDate publishDate;
     private String author;
@@ -16,9 +14,6 @@ class Article{
         this.author = "No Author";
         this.publishDate = LocalDate.of(1000, 1, 1);
         this.content = null;
-
-        prevId++;
-        this.ID = prevId;
     }   
 
     /**
@@ -33,9 +28,6 @@ class Article{
         this.author = author;
         this.publishDate = publishDate;
         this.content = content;
-
-        prevId++;
-        this.ID = prevId;
     }
 
     /**
@@ -50,9 +42,19 @@ class Article{
         this.author = author;
         this.publishDate = Repository.dateParse(publishDate);
         this.content = content;
+    }
+    /**
+     * Creates an Article given a input string separated by comammas
+     * @param input
+     */
+    public Article (String input) {
+        String[] arrOfStr = input.split(",");
+        this.title = arrOfStr[0];
+        this.author = arrOfStr[1];
+        this.publishDate = Repository.dateParse(arrOfStr[2]);
+        this.content = arrOfStr[3];
 
-        prevId++;
-        this.ID = prevId;
+
     }
     /**
      * Copy Constructor for Article class
@@ -63,7 +65,6 @@ class Article{
         this.author = article.author;
         this.publishDate = article.publishDate;
         this.content = article.content;
-        this.ID = article.ID;
     }
 
     /**
@@ -96,12 +97,6 @@ class Article{
 
     public String getContent() {
         return content;
-    }
-    /**
-     * @return The unique ID of the Article
-     */
-    public int getId() {
-        return ID;
     }
 
 
@@ -139,6 +134,15 @@ class Article{
         if (date != null) {
             this.publishDate = date;
         }
+    }
+
+    public void print(){
+        System.out.println("");
+        //System.out.println("ID (Somewhat Useless And Fake Right Now): " + this.getId());
+        System.out.println("Title: " + this.getTitle());
+        System.out.println("Author: " + this.getAuthor());
+        System.out.println("Publication Date: " + this.getPublishDate());
+        System.out.println("Content: " + this.getContent());
     }
 
 }

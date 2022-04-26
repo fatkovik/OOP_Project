@@ -17,21 +17,16 @@ import javax.xml.transform.*;
 
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
 
-public class XMLController {
-
-    //TASKS, 
-        //remove xml article
-        //fix spaces.
+public class XML implements ControllerInterface{
     
     private String path;
     private Document doc;
     private File xmlFile;
     
-    public XMLController(String _path){
+    public XML(String _path){
         this.path = _path;
         xmlFile = new File(this.path);
         try {
@@ -72,7 +67,7 @@ public class XMLController {
      * @NOT_FOR_USE
      * was made to create more xml nodes if the number of objects is bigger than the quantitiy of XML article's
      */
-    private void createXmlElements(){
+    private void createElements(){
         //String _id, String _nameOfArticle, String _author, String _publishDate, String _text
         Element rootArticleSet = doc.getDocumentElement();
 
@@ -101,7 +96,7 @@ public class XMLController {
      * maybe if i knew oop better i would of done that
      * @return String 2d array, with rows as articles, and columns as article elements
      */
-    public String[][] readArticleFromXML(){
+    public String[][] readArticle(){
 
         System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
 
@@ -146,16 +141,14 @@ public class XMLController {
      * Given the modified arraylist, saves the changes into the file
      * @param articles arraylist containing articles
      */
-    public void writeArticleToXML(Repository repo){
-        ArrayList<Article> articles = repo.getArticles();
-
+    public void writeArticle(ArrayList<Article> articles){
         System.out.println("Appending document with modified content");
 
         NodeList list = doc.getElementsByTagName("article");
 
         if(list.getLength() < articles.size()){
             for (int i = list.getLength(); i < articles.size(); i++) {
-                createXmlElements();
+                createElements();
             }
         }
 
@@ -168,7 +161,7 @@ public class XMLController {
 
                 Element e = (Element) node;
 
-                e.getElementsByTagName("id").item(0).setTextContent(String.valueOf(articles.get(i).getId()));
+                e.getElementsByTagName("id").item(0).setTextContent(String.valueOf(i));
                 e.getElementsByTagName("title").item(0).setTextContent(articles.get(i).getTitle());
                 e.getElementsByTagName("author").item(0).setTextContent(articles.get(i).getAuthor());
                 e.getElementsByTagName("publishDate").item(0).setTextContent(articles.get(i).getPublishDate());

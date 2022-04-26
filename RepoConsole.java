@@ -1,0 +1,112 @@
+import java.util.Scanner;
+
+public class RepoConsole {
+
+    private Repository repo;
+
+    public RepoConsole(){
+        this.repo = new Repository<XML>(new XML(".\\ArticleXML1.xml"));
+    }
+
+    public RepoConsole(String type, String path) {
+        if(type.equals("XML")){
+            this.repo = new Repository<XML>(new XML(path));
+        }
+        else if(type.equals("TXT")){
+            this.repo = new Repository<TXT>(new TXT(path));
+        }
+        else{
+            System.out.println("Unsupported type of document;");
+            System.exit(0);
+        }
+    }
+        
+
+    public void printInstructions () {
+        System.out.println("-----------------------");
+        System.out.println("Input >p< to browse the default Articles.");
+        System.out.println("Input >c< to create a new Article.");
+        System.out.println("Input >o< and the ID to open an Article.");
+        System.out.println("Input >e< and the ID to edit an Article.");
+        System.out.println("Input >r< and the ID to remove an Article.");
+        System.out.println();
+        System.out.println("To save changes into the XML file, input >s<.");
+        System.out.println("If you want to end the program, input >q<.");
+        System.out.println("-----------------------");
+    }
+
+
+    public void run() {
+        Scanner sc = new Scanner(System.in);
+        String inputLine;
+        System.out.println();
+        System.out.println("Welcome to the Repository Console!");
+        printInstructions();
+        inputLine = sc.nextLine();
+
+        // creating a default repository with the articles in ArticleXML1.xml
+        //Repository<XML> repo = new Repository<XML>(new XML(".\\ArticleXML1.xml"));
+        repo.appendToRepository(repo.controller.readArticle());
+
+        while (!inputLine.equals("q")) {
+            try {
+                if (inputLine.equals("p")) {
+                    repo.print();
+                }
+
+                else if (inputLine.startsWith("o ")) {
+                    repo.print(Integer.parseInt(inputLine.substring(2)));
+                }
+
+                else if (inputLine.startsWith("e ")) {
+                    repo.modify(Integer.parseInt(inputLine.substring(2)), createArticleInput());
+                    System.out.println("Article Successfully Edited!");
+                }
+
+                else if (inputLine.startsWith("r ")) {
+                    repo.removeArticle(Integer.parseInt(inputLine.substring(2)));
+                    System.out.println("Article Successfully Removed!");
+                }
+
+                else if (inputLine.equals("c")) {
+                    repo.appendToRepository(new Article(createArticleInput()));
+                    System.out.println();
+                    System.out.println("Article Successfully Created!");
+                }
+
+                else if (inputLine.equals("s")) {
+                    repo.controller.writeArticle(repo.getArticles());
+                    System.out.println("File Successfully Updated!");
+                }
+
+                else {
+                    System.out.println("Wrong Instructions");
+                }
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            System.out.println();
+            printInstructions();
+            inputLine =sc.nextLine();
+        }
+    }
+
+    public String createArticleInput () {
+        Scanner sc = new Scanner(System.in);
+        String input = "";
+
+        System.out.print("Enter New Title: ");
+        input += sc.nextLine();
+        System.out.print("Enter New Author: ");
+        input += "," + sc.nextLine();
+        System.out.print("Enter New Publication Date (yyyy-mm-dd): ");
+        input += "," + sc.nextLine();
+        System.out.print("Enter New Content: ");
+        input += "," + sc.nextLine();
+
+        sc.close();
+        return input;
+    }
+}

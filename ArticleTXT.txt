@@ -1,0 +1,11 @@
+        1<nextElem>
+        Title 1<nextElem>
+        Author 1<nextElem>
+        1269-12-29<nextElem>
+        Content 1
+    <article>
+        2<nextElem>
+        Title 32<nextElem>
+        Author 2<nextElem>
+        1235-12-29<nextElem>
+        Content 2

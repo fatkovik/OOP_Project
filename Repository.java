@@ -1,27 +1,19 @@
 import java.util.ArrayList;
-import java.nio.ReadOnlyBufferException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.Scanner;
 
-public class Repository{
+public class Repository <T extends ControllerInterface>{
+
+    public T controller;
 
     private ArrayList<Article> articles = new ArrayList<Article>();
-    
-    public XMLController xmlController;
     /**
      * Repository Construcor
      * @param Path to the txt file containing text to parse (better to use with path)
      */
-    public Repository(String _path){
-        xmlController = new XMLController(_path);
-    }
-    /**
-     * no arg Constructor for Repository Class
-     */
-    public Repository(){
-        xmlController = new XMLController("\\.");
+    public Repository(T param){
+        this.controller = param;
     }
     // /**
     //  * Copy Constructor for Repository class
@@ -43,7 +35,7 @@ public class Repository{
      * @return path
      */
     public String getPath() {
-        return xmlController.getPath();
+        return controller.getPath();
     }
 
     /**
@@ -105,36 +97,37 @@ public class Repository{
         articles.remove(index - 1);
     }
 
-
-    //#region test
     /**
      * Modifies the Article with the given ID and parameters
      * @param index the ID of the article you want modify
      * @TODO: UPDAT METHOD, ADD OVERLOADS, MAKE IT WOKR WITH ID AND TITLE ONLY AND CHANGE THE GIVEN PARAMETER.
      */
-
-    public void modify (int index, String title, String author, String date, String content) {
-        System.out.println("ID: " + articles.get(index - 1).getId());
-        articles.get(index - 1).setTitle(title);
-        articles.get(index - 1).setAuthor(author);
-        articles.get(index - 1).setPublishDate(dateParse(date));
-        articles.get(index - 1).setContent(content);
+    public void modify (int index, String input) {
+        String[] arrOfStr = input.split(",");
+        articles.get(index - 1).setTitle(arrOfStr[0]);
+        articles.get(index - 1).setAuthor(arrOfStr[1]);
+        articles.get(index - 1).setPublishDate(dateParse(arrOfStr[2]));
+        articles.get(index - 1).setContent(arrOfStr[3]);
     }
 
 
 
     public void print(){
-        for (int i = 0; i < articles.size(); i++) {
-            System.out.println("");
-            System.out.println(articles.get(i).getId());
-            System.out.println(articles.get(i).getTitle());
-            System.out.println(articles.get(i).getAuthor());
-            System.out.println(articles.get(i).getPublishDate());
-            System.out.println(articles.get(i).getContent());
-            System.out.println("");
+
+        if (articles.size() == 0) {
+            System.out.println("Repository Empty! Input 'c' to create an Article!");
+        } else {
+            for (int i = 0; i < articles.size(); i++) {
+                System.out.println("");
+
+                System.out.println("[" + (i + 1) + "] " + articles.get(i).getTitle());
+            }
         }
-        
+
     }
-    //#endregion
+    
+    public void print(int index) {
+        getArticles().get(index - 1).print();
+    }
 }
 
