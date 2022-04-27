@@ -100,7 +100,7 @@ public class RepoConsole {
                     System.out.println("File Successfully Sorted!");
 
                 } else if (inputLine.equals("se")) {
-                    System.out.print("Please Input the Parameter to Search With: ");
+                    System.out.print("Please Input the Parameter to Search With: >Title< or >Author< ");
                     String searchType = sc.nextLine();
                     System.out.print("Search: ");
                     repo.search(sc.nextLine(),searchType);
@@ -131,7 +131,7 @@ public class RepoConsole {
         input += "," + sc.nextLine();
         System.out.print("Enter New Content: ");
         input += "," + sc.nextLine();
-        
+
         return input;
     }
 

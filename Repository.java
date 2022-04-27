@@ -139,7 +139,7 @@ public class Repository <T extends ControllerInterface>{
      */
     public void search(String input, String searchType) {
         switch (searchType) {
-            case "Author":
+            case "author":
                 for (int i = 0; i < getArticles().size(); i++) {
                     if (getArticles().get(i).getAuthor().contains(input)) {
                         System.out.println("\n" + "Author Found!");
@@ -151,7 +151,7 @@ public class Repository <T extends ControllerInterface>{
                     }
                 }
                 break;
-            case "Title":
+            case "title":
                 for (int i = 0; i < getArticles().size(); i++) {
                     if (getArticles().get(i).getTitle().contains(input)) {
                         System.out.println("\n" + "Title Found!");
