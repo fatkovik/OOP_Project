@@ -33,6 +33,7 @@ public class RepoConsole {
         System.out.println("Input >ts< to sort by Title");
         System.out.println("Input >as< to sort by Author");
         System.out.println("Input >ds< to sort by Date");
+        System.out.println("Input >se< to search");
         System.out.println();
         System.out.println("To save changes into the file, input  >s<.");
         System.out.println("If you want to end the program, input >q<.");
@@ -97,8 +98,13 @@ public class RepoConsole {
                 else if (inputLine.equals("ds")) {
                     repo.sortByDate();
                     System.out.println("File Successfully Sorted!");
-                }
 
+                } else if (inputLine.equals("se")) {
+                    System.out.print("Please Input the Parameter to Search With: ");
+                    String searchType = sc.nextLine();
+                    System.out.print("Search: ");
+                    repo.search(sc.nextLine(),searchType);
+                }
                 else {
                     System.out.println("Wrong Instructions");
                 }
@@ -109,7 +115,7 @@ public class RepoConsole {
 
             System.out.println();
             printInstructions();
-            inputLine =sc.nextLine();
+            inputLine = sc.nextLine();
         }
     }
 
