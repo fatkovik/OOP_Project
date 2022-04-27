@@ -45,22 +45,4 @@ public class ComparatorForSort <T extends Comparable<? super T>> {
 
         return sortedList;
     }
-    public static void main(String[] args) {
-
-        //Testing Center
-        ComparatorForSort<Integer> p1 = new ComparatorForSort<>();
-
-        ArrayList<Integer> l1 = new ArrayList<>();
-
-        l1.add(12);
-        l1.add(43);
-        l1.add(77);
-
-        l1 = (ArrayList<Integer>) p1.mergesort(l1);
-
-        for (Integer element : l1) {
-            System.out.println(element);
-        }
-    }
-
 }

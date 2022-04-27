@@ -90,6 +90,13 @@ class Article{
     public String getPublishDate() {
         return String.valueOf(publishDate);
     }
+    /**
+     * gets <code>publishDate</code>
+     * @return publish date typeOf LocalDate
+     */
+    public LocalDate getPublishDateTypeLocalDate() {
+        return publishDate;
+    }
 
     /**
      * @return The contents of the Article

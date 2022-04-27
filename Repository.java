@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Comparator;
 
 public class Repository <T extends ControllerInterface>{
 
@@ -120,7 +121,7 @@ public class Repository <T extends ControllerInterface>{
             for (int i = 0; i < articles.size(); i++) {
                 System.out.println("");
 
-                System.out.println("[" + (i + 1) + "] " + articles.get(i).getTitle());
+                System.out.println("[" + (i + 1) + "] " + articles.get(i).getAuthor() + " - " + articles.get(i).getTitle());
             }
         }
 
@@ -129,5 +130,43 @@ public class Repository <T extends ControllerInterface>{
     public void print(int index) {
         getArticles().get(index - 1).print();
     }
+
+    //#region Sorting
+
+     /**
+     * Sorts <code>Title</code> with compareTo()
+     */
+    public void sortByTitle() {
+        articles.sort(new Comparator<Article>() {
+            @Override
+            public int compare(Article o1, Article o2) {
+                return o1.getTitle().compareTo(o2.getTitle());
+            }
+        });
+    }
+    /**
+     * Sorts <code>Author</code> with compareTo()
+     */
+    public void sortByAuthor() {
+        articles.sort(new Comparator<Article>() {
+            @Override
+            public int compare(Article o1, Article o2) {
+                return o1.getAuthor().compareTo(o2.getAuthor());
+            }
+        });
+    }
+    /**
+     * Sorts <code>Publish Date</code> with compareTo()
+     * "Doesn't Work Now"
+     */
+    public void sortByDate() {
+        articles.sort(new Comparator<Article>() {
+            @Override
+            public int compare(Article o1, Article o2) {
+                return o1.getPublishDate().compareTo(o2.getPublishDate());
+            }
+        });
+    }
+    //#endregion
 }
 

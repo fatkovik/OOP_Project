@@ -30,7 +30,11 @@ public class RepoConsole {
         System.out.println("Input >e< and the ID to edit an Article.");
         System.out.println("Input >r< and the ID to remove an Article.");
         System.out.println();
-        System.out.println("To save changes into the XML file, input >s<.");
+        System.out.println("Input >ts< to sort by Title");
+        System.out.println("Input >as< to sort by Author");
+        System.out.println("Input >ds< to sort by Date");
+        System.out.println();
+        System.out.println("To save changes into the file, input  >s<.");
         System.out.println("If you want to end the program, input >q<.");
         System.out.println("-----------------------");
     }
@@ -49,6 +53,7 @@ public class RepoConsole {
         repo.appendToRepository(repo.controller.readArticle());
 
         while (!inputLine.equals("q")) {
+            clearScreen();
             try {
                 if (inputLine.equals("p")) {
                     repo.print();
@@ -76,7 +81,22 @@ public class RepoConsole {
 
                 else if (inputLine.equals("s")) {
                     repo.controller.writeArticle(repo.getArticles());
-                    System.out.println("File Successfully Updated!");
+                    System.out.println("File Successfully Sorted!");
+                }
+
+                else if (inputLine.equals("ts")) {
+                    repo.sortByTitle();
+                    System.out.println("File Successfully Sorted!");
+                }
+
+                else if (inputLine.equals("as")) {
+                    repo.sortByAuthor();
+                    System.out.println("File Successfully Sorted!");
+                }
+
+                else if (inputLine.equals("ds")) {
+                    repo.sortByDate();
+                    System.out.println("File Successfully Sorted!");
                 }
 
                 else {
