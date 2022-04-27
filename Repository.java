@@ -131,6 +131,42 @@ public class Repository <T extends ControllerInterface>{
         getArticles().get(index - 1).print();
     }
 
+    /**
+     * Searches in the encyclopedia
+     * @param input Title or Author to be Found
+     * @param searchType Title or Author to be Searched in Encyclopedia
+     */
+    public void search(String input, String searchType) {
+        switch (searchType) {
+            case "Author":
+                for (int i = 0; i < getArticles().size(); i++) {
+                    if (getArticles().get(i).getAuthor().contains(input)) {
+                        System.out.println("\n" + "Author Found!");
+                        getArticles().get(i).print();
+                        return;
+                    } else {
+                        System.out.println("No Article Found by the " + searchType + ": " + input);
+                        return;
+                    }
+                }
+                break;
+            case "Title":
+                for (int i = 0; i < getArticles().size(); i++) {
+                    if (getArticles().get(i).getTitle().contains(input)) {
+                        System.out.println("\n" + "Title Found!");
+                        getArticles().get(i).print();
+                        return;
+                    } else {
+                        System.out.println("No Article Found by the " + searchType + ": " + input);
+                        return;
+                    }
+                }
+                break;
+            default:
+                System.out.println("Not a Valid Search Type");
+        }
+    }
+
     //#region Sorting
 
      /**
