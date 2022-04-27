@@ -6,4 +6,6 @@ public interface ControllerInterface {
     void writeArticle(ArrayList<Article> articles);
 
     String getPath();
+
+    void deleteElements(String id);
 }

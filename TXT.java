@@ -60,4 +60,10 @@ public class TXT implements ControllerInterface{
         this.path = path;
     }
 
+    @Override
+    public void deleteElements(String id) {
+        // TODO Auto-generated method stub
+        
+    }
+
 }

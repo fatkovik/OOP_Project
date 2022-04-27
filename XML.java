@@ -15,9 +15,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.*;
 
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathFactory;
+import javax.xml.xpath.*;
 
 
 public class XML implements ControllerInterface{
@@ -89,6 +87,21 @@ public class XML implements ControllerInterface{
         article.appendChild(content);
     }
 
+    public void deleteElements(String id) {
+		try {
+			NodeList articleList = doc.getElementsByTagName("article");
+			for (int i = 0; i < articleList.getLength(); i++) {
+				Element articleELEM = (Element) articleList.item(i);
+				Element idTag = (Element) articleELEM.getElementsByTagName("id").item(0);
+				if (idTag.getTextContent().equalsIgnoreCase(id)) {
+					idTag.getParentNode().getParentNode().removeChild(articleList.item(i));
+					break;
+				}
+			}
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+	}
     /**
      * reads and return 2d array from given XML
      * probably consumes a lot of memory
@@ -137,6 +150,7 @@ public class XML implements ControllerInterface{
         }
         
     }
+
     /**
      * Given the modified arraylist, saves the changes into the file
      * @param articles arraylist containing articles
@@ -152,6 +166,11 @@ public class XML implements ControllerInterface{
             }
         }
 
+        // if(list.getLength() > articles.size()){
+        //     for (int i = articles.size(); i < list.getLength(); i++) {
+        //         deleteElements();
+        //     }
+        // }
 
         for (int i = 0; i < list.getLength(); i++) {
 

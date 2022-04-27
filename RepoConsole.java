@@ -81,7 +81,7 @@ public class RepoConsole {
 
                 else if (inputLine.equals("s")) {
                     repo.controller.writeArticle(repo.getArticles());
-                    System.out.println("File Successfully Sorted!");
+                    System.out.println("File Successfully Saved!");
                 }
 
                 else if (inputLine.equals("ts")) {
@@ -125,8 +125,7 @@ public class RepoConsole {
         input += "," + sc.nextLine();
         System.out.print("Enter New Content: ");
         input += "," + sc.nextLine();
-
-        sc.close();
+        
         return input;
     }
 

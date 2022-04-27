@@ -96,6 +96,7 @@ public class Repository <T extends ControllerInterface>{
 
     public void removeArticle(int index) {
         articles.remove(index - 1);
+        controller.deleteElements(String.valueOf(index));
     }
 
     /**
