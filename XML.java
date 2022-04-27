@@ -111,7 +111,12 @@ public class XML implements ControllerInterface{
      */
     public String[][] readArticle(){
 
-        System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
+        if(this.doc == null){
+            System.out.println("Wrong path to the file");
+            System.exit(0);
+        }else{
+            System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
+        }
 
         NodeList list = doc.getElementsByTagName("article");
 

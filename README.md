@@ -7,12 +7,12 @@
 ### D - Delete
 
 # NEW TASKS
-[ ] Search;
+[ ] Search **not working;
 [ ] TXT Functionality;
 [x] XML deleting;
-[ ] Path null exception Doc creaiotn in XML;
+[x] Path null exception Doc creaiotn in XML;
 [ ] Out of bounds ID's will make exception;
-[ ] Fix ID system (could be xml implemented);
+[ ] Fix ID system (could be xml implemented) ??;
 
 # Bugs
 [ ] when editing 0 index article, outOfBoundException;
