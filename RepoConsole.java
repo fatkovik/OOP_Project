@@ -33,6 +33,7 @@ public class RepoConsole {
         System.out.println("Input >ts< to sort by Title");
         System.out.println("Input >as< to sort by Author");
         System.out.println("Input >ds< to sort by Date");
+        System.out.println();
         System.out.println("Input >se< to search");
         System.out.println();
         System.out.println("To save changes into the file, input  >s<.");

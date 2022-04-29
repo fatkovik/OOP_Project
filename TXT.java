@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class TXT implements ControllerInterface{
 
@@ -24,27 +25,20 @@ public class TXT implements ControllerInterface{
     }
 
     public String[][] readArticle() {
-        sc.useDelimiter("\\Z");
+        sc.useDelimiter("<>");
         
         String textItself = sc.next();
-        
-        String[] articleDiffered = textItself.split("<article>");
-        
-        String[][] args = new String[articleDiffered.length][5];
-        for (int i = 0; i < articleDiffered.length; i++) {
-            args[i][0] = articleDiffered[i].split("<nextElem>")[0];
-            args[i][1] = articleDiffered[i].split("<nextElem>")[1];
-            args[i][2] = articleDiffered[i].split("<nextElem>")[2];
-            args[i][3] = articleDiffered[i].split("<nextElem>")[3];
-            args[i][4] = articleDiffered[i].split("<nextElem>")[4];
-        }
+
+        String[][] args = new String[textItself.split("<article>").length][4];
+
+        String[] diffArticles = textItself.split("<article>");
 
         for (int i = 0; i < args.length; i++) {
-            for (int j = 0; j < args.length; j++) {
+            for (int j = 0; j < 4; j++) {
+                args[i][j] = diffArticles[i].split("<nextElem>")[j];
                 System.out.println(args[i][j]);
             }
         }
-
         return args;
     }
 
