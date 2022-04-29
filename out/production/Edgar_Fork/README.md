@@ -6,7 +6,17 @@
 ### U - Update
 ### D - Delete
 
-# Deadline: april 15 for those tasks.
+# NEW TASKS
+[ ] Search **not working;
+[ ] TXT Functionality;
+[x] XML deleting;
+[x] Path null exception Doc creaiotn in XML;
+[ ] Out of bounds ID's will make exception;
+[ ] Fix ID system (could be xml implemented) ??;
+
+# Bugs
+[ ] when editing 0 index article, outOfBoundException;
+[x] other index (1) NoSuchElementFound excpetion.
 
 ## STAGES
 1. Console app
@@ -28,18 +38,20 @@
         - [x] WRITE
         - [x] Provide utilities for boys (partially complete)
         - [ ] Bugs, Handling exceptions
-    - [ ] Review Generics ?
+    - [x] Review Generics ?
     - [ ] Same XML but with TXT.
     
 2. Edgar:
     - Implement comporator
-        - [ ] Actuallu usable.
-        - [ ] Write the additional method in Repo to acieve this.
-        - [ ] Make it work with Title, Author, Date, Content.
-        - [ ] Kinda make it abstract.
+        - [x] Actuallu usable.
+        - [x] Write the additional method in Repo to acieve this.
+        - [x] Make it work with Title, Author, Date, Content.
+        - [x] Kinda make it abstract.
 3. Tariel:
     - CMD
-        - [ ] Make all the methods and functionality accesible with interface.
-        - [ ] I/O, make interface.
-        - [ ] Change, Update, Delete of articles.
-        - [ ] Basic Functionality.
+        - [x] Make all the methods and functionality accesible with interface.
+        - [x] I/O, make interface.
+        - [x] Change, Update, Delete of articles.
+        - [x] Basic Functionality.
+
+

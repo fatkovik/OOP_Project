@@ -76,7 +76,7 @@ public class Repository <T extends ControllerInterface>{
 
     public void appendToRepository(String[][] args){
         for (int i = 0; i < args.length; i++) {
-            articles.add(new Article(args[i][0], args[i][1], dateParse(args[i][2]), args[i][3]));   
+            articles.add(new Article(args[i][0], args[i][1], dateParse(args[i][2]), args[i][3]));
         }
     }
 
@@ -127,7 +127,7 @@ public class Repository <T extends ControllerInterface>{
         }
 
     }
-    
+
     public void print(int index) {
         getArticles().get(index - 1).print();
     }
@@ -145,11 +145,9 @@ public class Repository <T extends ControllerInterface>{
                         System.out.println("\n" + "Author Found!");
                         getArticles().get(i).print();
                         return;
-                    } else {
-                        System.out.println("No Article Found by the " + searchType + ": " + input);
-                        return;
                     }
                 }
+                System.out.println("No Article Found by the " + searchType + ": " + input);
                 break;
             case "title":
                 for (int i = 0; i < getArticles().size(); i++) {
@@ -157,11 +155,9 @@ public class Repository <T extends ControllerInterface>{
                         System.out.println("\n" + "Title Found!");
                         getArticles().get(i).print();
                         return;
-                    } else {
-                        System.out.println("No Article Found by the " + searchType + ": " + input);
-                        return;
                     }
                 }
+                System.out.println("No Article Found by the " + searchType + ": " + input);
                 break;
             default:
                 System.out.println("Not a Valid Search Type");
