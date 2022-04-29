@@ -7,16 +7,16 @@
 ### D - Delete
 
 # NEW TASKS
-[ ] Search **not working;
-[ ] TXT Functionality;
-[x] XML deleting;
-[x] Path null exception Doc creaiotn in XML;
-[ ] Out of bounds ID's will make exception;
-[ ] Fix ID system (could be xml implemented) ??;
+-[ ] TXT Functionality;
+-[x] XML deleting;
+-[x] Path null exception Doc creaiotn in XML;
+-[ ] Out of bounds ID's will make exception;
+-[ ] Fix ID system (could be xml implemented) ??;
 
 # Bugs
-[ ] when editing 0 index article, outOfBoundException;
-[x] other index (1) NoSuchElementFound excpetion.
+- [ ] when editing 0 index article, outOfBoundException;
+- [x] other index (1) NoSuchElementFound excpetion.
+- [x] Search **not working;
 
 ## STAGES
 1. Console app
@@ -47,6 +47,7 @@
         - [x] Write the additional method in Repo to acieve this.
         - [x] Make it work with Title, Author, Date, Content.
         - [x] Kinda make it abstract.
+        - [x] Add Search Mechanism.
 3. Tariel:
     - CMD
         - [x] Make all the methods and functionality accesible with interface.
