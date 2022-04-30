@@ -2,52 +2,37 @@
 <articleSet>
     <article>
         <id>0</id>
-        <title>Compiler</title>
-        <author>Fibonacci</author>
-        <publishDate>1269-12-29</publishDate>
-        <content>Content 1</content>
-    </article>
-    <article>
-        <id>1</id>
         <title>Bipolar</title>
         <author>Rabiz</author>
         <publishDate>1933-01-02</publishDate>
         <content>Content 2</content>
     </article>
     <article>
-        <id>2</id>
+        <id>1</id>
         <title>Die</title>
         <author>Anastasia</author>
         <publishDate>2021-02-13</publishDate>
         <content>Content 3</content>
+    </article>
+    <article>
+        <id>2</id>
+        <title>Andromeda</title>
+        <author>Daron</author>
+        <publishDate>2022-12-23</publishDate>
+        <content>Content 4</content>
     </article>
     <article>
         <id>3</id>
-        <title>Andromeda</title>
-        <author>Daron</author>
-        <publishDate>2022-12-23</publishDate>
-        <content>Content 4</content>
-    </article>
-    <article>
-        <id>4</id>
         <title>Die</title>
         <author>Anastasia</author>
         <publishDate>2021-02-13</publishDate>
         <content>Content 3</content>
     </article>
     <article>
-        <id>5</id>
-        <title>Andromeda</title>
+        <id>4</id>
+        <title>Andromada</title>
         <author>Daron</author>
         <publishDate>2022-12-23</publishDate>
         <content>Content 4</content>
     </article>
-    <article>
-        <id>6</id>
-        <title>yes2</title>
-        <author>yes2</author>
-        <publishDate>1231-12-12</publishDate>
-        <content>yes2</content>
-    </article>
-    
 </articleSet>

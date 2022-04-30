@@ -10,11 +10,11 @@
 -[ ] TXT Functionality;
 -[x] XML deleting;
 -[x] Path null exception Doc creaiotn in XML;
--[ ] Out of bounds ID's will make exception;
--[ ] Fix ID system (could be xml implemented) ??;
+-[x] Out of bounds ID's will make exception;
+-[x] Fix ID system (could be xml implemented) ??;
 
 # Bugs
-- [ ] when editing 0 index article, outOfBoundException;
+- [x] when editing 0 index article, outOfBoundException;
 - [x] other index (1) NoSuchElementFound excpetion.
 - [x] Search **not working;
 
@@ -37,7 +37,7 @@
         - [x] READ
         - [x] WRITE
         - [x] Provide utilities for boys (partially complete)
-        - [ ] Bugs, Handling exceptions
+        - [x] Bugs, Handling exceptions
     - [x] Review Generics ?
     - [ ] Same XML but with TXT.
     

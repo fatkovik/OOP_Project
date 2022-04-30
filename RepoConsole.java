@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class RepoConsole {
@@ -72,7 +73,7 @@ public class RepoConsole {
 
                 else if (inputLine.startsWith("r ")) {
                     repo.removeArticle(Integer.parseInt(inputLine.substring(2)));
-                    System.out.println("Article Successfully Removed!");
+                    System.out.println("Article Successfully Removed and Saved to;");
                 }
 
                 else if (inputLine.equals("c")) {
@@ -110,8 +111,12 @@ public class RepoConsole {
                     System.out.println("Wrong Instructions");
                 }
             }
-            catch (Exception e) {
-                e.printStackTrace();
+            catch (IndexOutOfBoundsException e) {
+                System.out.println("Wrong Index: Try Again");
+            }
+
+            catch (NumberFormatException f) {
+                System.out.println("Wrong Input, Input index Please");
             }
 
             System.out.println();

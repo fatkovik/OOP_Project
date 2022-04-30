@@ -16,12 +16,7 @@ public class Repository <T extends ControllerInterface>{
     public Repository(T param){
         this.controller = param;
     }
-    // /**
-    //  * Copy Constructor for Repository class
-    //  * @param other Repository containing articles
-    //  */
-    // public Repository(Repository other){
-    // }
+
     /**
      * getter for ArrayList of articles
      * @return arraylist of article;
@@ -94,9 +89,9 @@ public class Repository <T extends ControllerInterface>{
      * @param index the ID of the article you want remove
      */
 
-    public void removeArticle(int index) {
+    public void removeArticle(int index) throws IndexOutOfBoundsException {
         articles.remove(index - 1);
-        controller.deleteElements(String.valueOf(index));
+        controller.deleteElements(String.valueOf(index - 1));
     }
 
     /**
@@ -104,7 +99,7 @@ public class Repository <T extends ControllerInterface>{
      * @param index the ID of the article you want modify
      * @TODO: UPDAT METHOD, ADD OVERLOADS, MAKE IT WOKR WITH ID AND TITLE ONLY AND CHANGE THE GIVEN PARAMETER.
      */
-    public void modify (int index, String input) {
+    public void modify (int index, String input) throws IndexOutOfBoundsException  {
         String[] arrOfStr = input.split(",");
         articles.get(index - 1).setTitle(arrOfStr[0]);
         articles.get(index - 1).setAuthor(arrOfStr[1]);
@@ -128,7 +123,7 @@ public class Repository <T extends ControllerInterface>{
 
     }
 
-    public void print(int index) {
+    public void print(int index) throws IndexOutOfBoundsException {
         getArticles().get(index - 1).print();
     }
 

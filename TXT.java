@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.StringTokenizer;
 
 public class TXT implements ControllerInterface{
 
@@ -27,7 +26,11 @@ public class TXT implements ControllerInterface{
     public String[][] readArticle() {
         sc.useDelimiter("<>");
         
-        String textItself = sc.next();
+        String textItself = "";
+
+        while (sc.hasNext()) {
+            textItself = sc.nextLine();
+        }
 
         String[][] args = new String[textItself.split("<article>").length][4];
 
