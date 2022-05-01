@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -29,7 +30,8 @@ public class TXT implements ControllerInterface{
         String textItself = "";
 
         while (sc.hasNext()) {
-            textItself = sc.nextLine();
+            textItself = textItself + sc.nextLine();
+
         }
 
         String[][] args = new String[textItself.split("<article>").length][4];
@@ -46,7 +48,22 @@ public class TXT implements ControllerInterface{
     }
 
     public void writeArticle(ArrayList<Article> articles) {
-        System.out.println("that works");
+        
+        String toOutput = "";
+        for (int i = 0; i < articles.size(); i++) {
+            toOutput = "\n" + toOutput + "\n" + articles.get(i).getTitle() + "<nextElem>" + articles.get(i).getAuthor() + "<nextElem>" +
+                       articles.get(i).getPublishDate() + "<nextElem>" + articles.get(i).getContent() + "\n" + "<article>" + "\n";
+        }
+        toOutput = toOutput + "<>";
+
+        try {
+            FileWriter fileWrite = new FileWriter(txtFile);
+            fileWrite.write(toOutput);
+            fileWrite.close();
+            System.out.println("wroteSuccesfully");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public String getPath(){
@@ -59,8 +76,6 @@ public class TXT implements ControllerInterface{
 
     @Override
     public void deleteElements(String id) {
-        // TODO Auto-generated method stub
-        
     }
 
 }

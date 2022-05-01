@@ -1,4 +1,3 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class RepoConsole {
@@ -49,7 +48,7 @@ public class RepoConsole {
         System.out.println();
         System.out.println("Welcome to the Repository Console!");
         printInstructions();
-        inputLine = sc.nextLine();
+        inputLine = sc.nextLine().toLowerCase();
 
         // creating a default repository with the articles in ArticleXML1.xml
         //Repository<XML> repo = new Repository<XML>(new XML(".\\ArticleXML1.xml"));
