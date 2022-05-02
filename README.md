@@ -11,10 +11,24 @@
 - [ ] Fix Generics.
 - [ ] Sep. into packages.
 
+# Comments from Varduhi.
+- [ ] GUI - Tariel, Ed
+- [ ] type hierarchy? - should be discussed
+- [ ] serach variation - Ed;
+- [ ] by the file, format see if we use txt or xml - Jiro
+- [ ] presentation, uml diagram, demo - Ed, Tariel, Jiro
+- [ ] fix date and time when creating article. - Tariel.
+- [ ] edit specific thing - Tariel
+- [ ] generate javadoc pages - Jir
+    - [ ] different class pages. and see if it makes sense at all. 
+    - [ ] see if api makes sense.
+- [ ] fav articles - esi heto
+- [ ] user class? ? ete unenaq;
+
+# EXTEND THIS FURTHER
+
 # Bugs
-- [x] when editing 0 index article, outOfBoundException;
-- [x] other index (1) NoSuchElementFound excpetion.
-- [x] Search **not working;
+
 
 ## STAGES
 1. Console app
@@ -37,5 +51,7 @@
     
 2. Edgar:
     - [x] Implement comporator
-3. Tariel:
+3. Tariel:ts
     - [x] CMD
+
+- [ ] format long output -  ?

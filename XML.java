@@ -79,7 +79,6 @@ public class XML implements ControllerInterface{
         Element publishDate = doc.createElement("publishDate");
         Element content = doc.createElement("content");
 
-
         article.appendChild(id);
         article.appendChild(title);
         article.appendChild(author);

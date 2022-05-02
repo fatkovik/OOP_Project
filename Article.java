@@ -144,6 +144,7 @@ class Article{
     }
 
     public void print(){
+        System.out.println("_______________________________");
         System.out.println("");
         //System.out.println("ID (Somewhat Useless And Fake Right Now): " + this.getId());
         System.out.println("Title: " + this.getTitle());

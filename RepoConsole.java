@@ -8,6 +8,8 @@ public class RepoConsole {
         this.repo = new Repository<XML>(new XML(".\\ArticleXML1.xml"));
     }
 
+
+    //can be with done with booleans, and file types.
     public RepoConsole(String type, String path) {
         if(type.equals("XML")){
             this.repo = new Repository<XML>(new XML(path));
@@ -55,7 +57,6 @@ public class RepoConsole {
         repo.appendToRepository(repo.controller.readArticle());
 
         while (!inputLine.equals("q")) {
-            clearScreen();
             try {
                 if (inputLine.equals("p")) {
                     repo.print();
