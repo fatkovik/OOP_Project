@@ -7,7 +7,7 @@
 ### D - Delete
 
 # NEW TASKS
-- [ ] TXT Functionality;
+- [ ] encyclopedia.TXT Functionality;
 - [ ] Fix Generics.
 - [ ] Sep. into packages.
 
@@ -24,7 +24,6 @@
     - [ ] see if api makes sense.
 - [ ] fav articles - esi heto
 - [ ] user class? ? ete unenaq;
-
 # EXTEND THIS FURTHER
 
 # Bugs
@@ -32,22 +31,22 @@
 
 ## STAGES
 1. Console app
-- Add new articles thd. cmd. (updates must be visiable in the XML file)
-- Delete old articles thd. cmd (updates must be visiable in the XML file)
-- Update old articles thd. cmd (updates must be visiable in the XML file)
+- Add new articles thd. cmd. (updates must be visiable in the encyclopedia.XML file)
+- Delete old articles thd. cmd (updates must be visiable in the encyclopedia.XML file)
+- Update old articles thd. cmd (updates must be visiable in the encyclopedia.XML file)
 - Print all articles in cmd (in dsc. order)
 2. GUI App
-- Add new articles thd. GUI (updates must be visiable in the XML file)
-- Delete old articles thd. GUI (updates must be visiable in the XML file)
-- Update old articles thd. GUI (updates must be visiable in the XML file)
+- Add new articles thd. GUI (updates must be visiable in the encyclopedia.XML file)
+- Delete old articles thd. GUI (updates must be visiable in the encyclopedia.XML file)
+- Update old articles thd. GUI (updates must be visiable in the encyclopedia.XML file)
 - Print all articles in the separate window
 
 # boys u dont (usually) work with xml, you work with objects, 
-# if you need any functionality connected to XML, ask me :) @jiro
-1. Jiro - XML, I/O (How file class works with XML and I/O), Review generics
-    - [x] XML
+# if you need any functionality connected to encyclopedia.XML, ask me :) @jiro
+1. Jiro - encyclopedia.XML, I/O (How file class works with encyclopedia.XML and I/O), Review generics
+    - [x] encyclopedia.XML
     - [x] Review Generics ?
-    - [ ] ALMOST* Same XML but with TXT.
+    - [ ] ALMOST* Same encyclopedia.XML but with encyclopedia.TXT.
     
 2. Edgar:
     - [x] Implement comporator

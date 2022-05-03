@@ -1,8 +1,11 @@
+package encyclopedia;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
+import encyclopedia.Article;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -18,7 +21,7 @@ import javax.xml.transform.*;
 import javax.xml.xpath.*;
 
 
-public class XML implements ControllerInterface{
+public class XML implements ControllerInterface {
     
     private String path;
     private Document doc;
@@ -46,10 +49,10 @@ public class XML implements ControllerInterface{
      * @NOT_FOR_USE
      * @throws Exception
      */
-    private void docBuilder() throws Exception{
+    public void docBuilder() throws Exception{
         DocumentBuilderFactory docBuilderfactory = DocumentBuilderFactory.newInstance();
 
-        //parsing the XML file here
+        //parsing the encyclopedia.XML file here
         DocumentBuilder docBuilder = docBuilderfactory.newDocumentBuilder();
         try{
             doc = docBuilder.parse(xmlFile);
@@ -63,9 +66,9 @@ public class XML implements ControllerInterface{
 
     /**
      * @NOT_FOR_USE
-     * was made to create more xml nodes if the number of objects is bigger than the quantitiy of XML article's
+     * was made to create more xml nodes if the number of objects is bigger than the quantitiy of encyclopedia.XML article's
      */
-    private void createElements(){
+    public void createElements(){
         //String _id, String _nameOfArticle, String _author, String _publishDate, String _text
         Element rootArticleSet = doc.getDocumentElement();
 
@@ -102,7 +105,7 @@ public class XML implements ControllerInterface{
 		}
 	}
     /**
-     * reads and return 2d array from given XML
+     * reads and return 2d array from given encyclopedia.XML
      * probably consumes a lot of memory
      * but i cant come up with a better method
      * maybe if i knew oop better i would of done that

@@ -1,10 +1,14 @@
+package encyclopedia;
+
+import encyclopedia.Article;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class TXT implements ControllerInterface{
+public class TXT implements ControllerInterface {
 
     private String path;
     private File txtFile;

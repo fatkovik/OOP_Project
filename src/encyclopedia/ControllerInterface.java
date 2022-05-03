@@ -1,3 +1,7 @@
+package encyclopedia;
+
+import encyclopedia.Article;
+
 import java.util.ArrayList;
 
 public interface ControllerInterface {

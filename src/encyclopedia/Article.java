@@ -1,3 +1,5 @@
+package encyclopedia;
+
 import java.time.LocalDate;
 
 class Article{
@@ -7,7 +9,7 @@ class Article{
     private String content;
     
     /**
-     * No arg constructor for Article Class
+     * No arg constructor for encyclopedia.Article Class
      */
     public Article(){
         this.title = "No Title";
@@ -17,11 +19,11 @@ class Article{
     }   
 
     /**
-     * Default Constructor for Article class
-     * @param title of the Article
-     * @param author of the Article
-     * @param publishDate of Article
-     * @param content of the Article
+     * Default Constructor for encyclopedia.Article class
+     * @param title of the encyclopedia.Article
+     * @param author of the encyclopedia.Article
+     * @param publishDate of encyclopedia.Article
+     * @param content of the encyclopedia.Article
      */
     public Article(String title, String author ,LocalDate publishDate, String content){
         this.title = title;
@@ -31,11 +33,11 @@ class Article{
     }
 
     /**
-     * Constructor using String for Date for Article class
-     * @param title of the Article
-     * @param author of the Article
-     * @param publishDate String date (d/mm/yyyy) of Article
-     * @param content of the Article
+     * Constructor using String for Date for encyclopedia.Article class
+     * @param title of the encyclopedia.Article
+     * @param author of the encyclopedia.Article
+     * @param publishDate String date (d/mm/yyyy) of encyclopedia.Article
+     * @param content of the encyclopedia.Article
      */
     public Article(String title, String author ,String publishDate, String content){
         this.title = title;
@@ -44,7 +46,7 @@ class Article{
         this.content = content;
     }
     /**
-     * Creates an Article given a input string separated by comammas
+     * Creates an encyclopedia.Article given a input string separated by comammas
      * @param input
      */
     public Article (String input) {
@@ -57,8 +59,8 @@ class Article{
 
     }
     /**
-     * Copy Constructor for Article class
-     * @param article Article
+     * Copy Constructor for encyclopedia.Article class
+     * @param article encyclopedia.Article
      */
     public Article(Article article){
         this.title = article.title;
@@ -99,7 +101,7 @@ class Article{
     }
 
     /**
-     * @return The contents of the Article
+     * @return The contents of the encyclopedia.Article
      */
 
     public String getContent() {
@@ -108,7 +110,7 @@ class Article{
 
 
     /**
-     * @param author The author of the Article
+     * @param author The author of the encyclopedia.Article
      */
     public void setAuthor(String author) {
         if (author != null) {
