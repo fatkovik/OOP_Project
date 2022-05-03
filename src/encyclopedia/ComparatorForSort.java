@@ -1,3 +1,5 @@
+package encyclopedia;
+
 import java.util.ArrayList;
 import java.util.List;
 

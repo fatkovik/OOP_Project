@@ -1,3 +1,7 @@
+package encyclopedia;
+
+import encyclopedia.Article;
+
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -10,8 +14,8 @@ public class Repository <T extends ControllerInterface>{
 
     private ArrayList<Article> articles = new ArrayList<Article>();
     /**
-     * Repository Construcor
-     * @param Path to the txt file containing text to parse (better to use with path)
+     * encyclopedia.Repository Construcor
+     * @param param to the txt file containing text to parse (better to use with path)
      */
     public Repository(T param){
         this.controller = param;
@@ -27,7 +31,7 @@ public class Repository <T extends ControllerInterface>{
 
     /**
      * getter for path
-     * needed in XML parses class;
+     * needed in encyclopedia.XML parses class;
      * @return path
      */
     public String getPath() {
@@ -55,18 +59,18 @@ public class Repository <T extends ControllerInterface>{
 
     /**
     * Creates and Adds an article to the repository (given all instance variables)
-    * @param nameOfArticle Name of the Article
+    * @param nameOfArticle Name of the encyclopedia.Article
     * @param author Name of the Author
     * @param publishDate The publication Date
-    * @param content The contents of the Article
+    * @param content The contents of the encyclopedia.Article
     */
     public void appendToRepository(String _title, String _author, String _publishDate, String _content){
         articles.add(new Article(_title, _author, dateParse(_publishDate), _content));
     }
 
     /**
-     * Adds articles from the XML file to the Repository
-     * @param args 2D Array created from the XML file containing article information
+     * Adds articles from the encyclopedia.XML file to the encyclopedia.Repository
+     * @param args 2D Array created from the encyclopedia.XML file containing article information
      */
 
     public void appendToRepository(String[][] args){
@@ -76,8 +80,8 @@ public class Repository <T extends ControllerInterface>{
     }
 
     /**
-     * Adds a given Article to the repository
-     * @param article of Article type
+     * Adds a given encyclopedia.Article to the repository
+     * @param article of encyclopedia.Article type
      */
 
     public void appendToRepository(Article article){
@@ -95,7 +99,7 @@ public class Repository <T extends ControllerInterface>{
     }
 
     /**
-     * Modifies the Article with the given ID and parameters
+     * Modifies the encyclopedia.Article with the given ID and parameters
      * @param index the ID of the article you want modify
      * @TODO: UPDAT METHOD, ADD OVERLOADS, MAKE IT WOKR WITH ID AND TITLE ONLY AND CHANGE THE GIVEN PARAMETER.
      */
@@ -112,7 +116,7 @@ public class Repository <T extends ControllerInterface>{
     public void print(){
 
         if (articles.size() == 0) {
-            System.out.println("Repository Empty! Input 'c' to create an Article!");
+            System.out.println("Repository Empty! Input 'c' to create an encyclopedia.Article!");
         } else {
             for (int i = 0; i < articles.size(); i++) {
                 System.out.println("");

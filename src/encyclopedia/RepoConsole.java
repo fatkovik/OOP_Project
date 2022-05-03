@@ -1,3 +1,5 @@
+package encyclopedia;
+
 import java.util.Scanner;
 
 public class RepoConsole {
@@ -27,10 +29,10 @@ public class RepoConsole {
     public void printInstructions () {
         System.out.println("-----------------------");
         System.out.println("Input >p< to browse the default Articles.");
-        System.out.println("Input >c< to create a new Article.");
-        System.out.println("Input >o< and the ID to open an Article.");
-        System.out.println("Input >e< and the ID to edit an Article.");
-        System.out.println("Input >r< and the ID to remove an Article.");
+        System.out.println("Input >c< to create a new encyclopedia.Article.");
+        System.out.println("Input >o< and the ID to open an encyclopedia.Article.");
+        System.out.println("Input >e< and the ID to edit an encyclopedia.Article.");
+        System.out.println("Input >r< and the ID to remove an encyclopedia.Article.");
         System.out.println();
         System.out.println("Input >ts< to sort by Title");
         System.out.println("Input >as< to sort by Author");
@@ -53,7 +55,7 @@ public class RepoConsole {
         inputLine = sc.nextLine().toLowerCase();
 
         // creating a default repository with the articles in ArticleXML1.xml
-        //Repository<XML> repo = new Repository<XML>(new XML(".\\ArticleXML1.xml"));
+        //encyclopedia.Repository<encyclopedia.XML> repo = new encyclopedia.Repository<encyclopedia.XML>(new encyclopedia.XML(".\\ArticleXML1.xml"));
         repo.appendToRepository(repo.controller.readArticle());
 
         while (!inputLine.equals("q")) {
@@ -68,18 +70,18 @@ public class RepoConsole {
 
                 else if (inputLine.startsWith("e ")) {
                     repo.modify(Integer.parseInt(inputLine.substring(2)), createArticleInput());
-                    System.out.println("Article Successfully Edited!");
+                    System.out.println("encyclopedia.Article Successfully Edited!");
                 }
 
                 else if (inputLine.startsWith("r ")) {
                     repo.removeArticle(Integer.parseInt(inputLine.substring(2)));
-                    System.out.println("Article Successfully Removed and Saved to;");
+                    System.out.println("encyclopedia.Article Successfully Removed and Saved to;");
                 }
 
                 else if (inputLine.equals("c")) {
                     repo.appendToRepository(new Article(createArticleInput()));
                     System.out.println();
-                    System.out.println("Article Successfully Created!");
+                    System.out.println("encyclopedia.Article Successfully Created!");
                 }
 
                 else if (inputLine.equals("s")) {
