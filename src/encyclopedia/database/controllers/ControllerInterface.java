@@ -1,6 +1,6 @@
-package encyclopedia;
+package src.encyclopedia.database.controllers;
 
-import encyclopedia.Article;
+import src.encyclopedia.Article;
 
 import java.util.ArrayList;
 

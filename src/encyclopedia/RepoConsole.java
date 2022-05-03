@@ -1,5 +1,8 @@
-package encyclopedia;
+package src.encyclopedia;
 
+import src.encyclopedia.database.controllers.Repository;
+import src.encyclopedia.database.controllers.XML;
+import src.encyclopedia.database.controllers.TXT;
 import java.util.Scanner;
 
 public class RepoConsole {
@@ -7,25 +10,26 @@ public class RepoConsole {
     private Repository repo;
 
     public RepoConsole(){
-        this.repo = new Repository<XML>(new XML(".\\ArticleXML1.xml"));
+        this.repo = new Repository<XML>(new XML(".\\ArticleXML.xml"));
     }
 
 
     //can be with done with booleans, and file types.
-    public RepoConsole(String type, String path) {
-        if(type.equals("XML")){
-            this.repo = new Repository<XML>(new XML(path));
-        }
-        else if(type.equals("TXT")){
-            this.repo = new Repository<TXT>(new TXT(path));
-        }
+    public RepoConsole(String path) {
+        if(xmlOrTxt(path)) this.repo = new Repository<XML>(new XML(path));
+        else if(xmlOrTxt(path)) this.repo = new Repository<TXT>(new TXT(path));
+    }
+        
+    public static boolean xmlOrTxt(String filePath){
+        if(filePath.substring(filePath.length() - 3, filePath.length()).equals("xml")) return true;
+        else if (filePath.substring(filePath.length() - 3, filePath.length()).equals("txt")) return false;
         else{
             System.out.println("Unsupported type of document;");
             System.exit(0);
+            return false;
         }
     }
-        
-
+    
     public void printInstructions () {
         System.out.println("-----------------------");
         System.out.println("Input >p< to browse the default Articles.");

@@ -1,8 +1,9 @@
-package encyclopedia;
+package src.encyclopedia;
 
 import java.time.LocalDate;
+import src.encyclopedia.database.controllers.Repository;
 
-class Article{
+public class Article{
     private String title;
     private LocalDate publishDate;
     private String author;

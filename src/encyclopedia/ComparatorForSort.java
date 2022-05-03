@@ -1,4 +1,4 @@
-package encyclopedia;
+package src.encyclopedia;
 
 import java.util.ArrayList;
 import java.util.List;

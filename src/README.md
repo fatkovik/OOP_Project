@@ -8,14 +8,14 @@
 
 # NEW TASKS
 - [ ] encyclopedia.TXT Functionality;
-- [ ] Fix Generics.
-- [ ] Sep. into packages.
+- [x] Fix Generics.
+- [x] Sep. into packages.
 
 # Comments from Varduhi.
 - [ ] GUI - Tariel, Ed
 - [ ] type hierarchy? - should be discussed
 - [ ] serach variation - Ed;
-- [ ] by the file, format see if we use txt or xml - Jiro
+- [x] by the file, format see if we use txt or xml - Jiro
 - [ ] presentation, uml diagram, demo - Ed, Tariel, Jiro
 - [ ] fix date and time when creating article. - Tariel.
 - [ ] edit specific thing - Tariel
