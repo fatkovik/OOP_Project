@@ -53,7 +53,7 @@ public class Repository <T extends ControllerInterface>{
         }catch(DateTimeParseException t){
             System.out.println("Time Formatting is wrong in Input!");
             System.out.println("Make sure to use \"yyyy/MM/dd\" format");
-            return null;
+            return LocalDate.now();
         }
     }
 

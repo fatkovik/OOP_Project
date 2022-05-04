@@ -17,9 +17,14 @@ public class RepoConsole {
     //can be with done with booleans, and file types.
     public RepoConsole(String path) {
         if(xmlOrTxt(path)) this.repo = new Repository<XML>(new XML(path));
-        else if(xmlOrTxt(path)) this.repo = new Repository<TXT>(new TXT(path));
+        else if(!xmlOrTxt(path)) this.repo = new Repository<TXT>(new TXT(path));
     }
         
+    
+    /** 
+     * @param filePath
+     * @return boolean
+     */
     public static boolean xmlOrTxt(String filePath){
         if(filePath.substring(filePath.length() - 3, filePath.length()).equals("xml")) return true;
         else if (filePath.substring(filePath.length() - 3, filePath.length()).equals("txt")) return false;
@@ -74,18 +79,18 @@ public class RepoConsole {
 
                 else if (inputLine.startsWith("e ")) {
                     repo.modify(Integer.parseInt(inputLine.substring(2)), createArticleInput());
-                    System.out.println("encyclopedia.Article Successfully Edited!");
+                    System.out.println("Article Successfully Edited!");
                 }
 
                 else if (inputLine.startsWith("r ")) {
                     repo.removeArticle(Integer.parseInt(inputLine.substring(2)));
-                    System.out.println("encyclopedia.Article Successfully Removed and Saved to;");
+                    System.out.println("Article Successfully Removed and Saved to;");
                 }
 
                 else if (inputLine.equals("c")) {
                     repo.appendToRepository(new Article(createArticleInput()));
                     System.out.println();
-                    System.out.println("encyclopedia.Article Successfully Created!");
+                    System.out.println("Article Successfully Created!");
                 }
 
                 else if (inputLine.equals("s")) {
@@ -131,6 +136,10 @@ public class RepoConsole {
         }
     }
 
+    
+    /** 
+     * @return String
+     */
     public String createArticleInput () {
         Scanner sc = new Scanner(System.in);
         String input = "";

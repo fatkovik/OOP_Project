@@ -14,6 +14,8 @@ public class TXT implements ControllerInterface {
     private File txtFile;
     Scanner sc;
 
+    private String textItself = "";
+
     public TXT(String _path){
         this.path = _path;
         this.txtFile = new File(this.path);
@@ -28,14 +30,15 @@ public class TXT implements ControllerInterface {
         }
     }
 
+    
+    /** 
+     * @return String[][]
+     */
     public String[][] readArticle() {
         sc.useDelimiter("<>");
-        
-        String textItself = "";
 
         while (sc.hasNext()) {
             textItself = textItself + sc.nextLine();
-
         }
 
         String[][] args = new String[textItself.split("<article>").length][4];
@@ -51,6 +54,10 @@ public class TXT implements ControllerInterface {
         return args;
     }
 
+    
+    /** 
+     * @param articles
+     */
     public void writeArticle(ArrayList<Article> articles) {
         
         String toOutput = "";
@@ -70,16 +77,38 @@ public class TXT implements ControllerInterface {
         }
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getPath(){
         return this.path;
     }
 
+    
+    /** 
+     * @param path
+     */
     public void setPath(String path) {
         this.path = path;
     }
 
+    public void createElement(){
+
+    }
+
+    
+    /** 
+     * @param id
+     */
     @Override
     public void deleteElements(String id) {
+        int intId = Integer.parseInt(id);
+        String[] textSplitted = textItself.split("<article>");
+        for (int i = intId; i < textSplitted.length -1; i++) {
+            textSplitted[i] = textSplitted[i+1];
+        }
+        textSplitted[textSplitted.length] = "";
     }
 
 }

@@ -37,9 +37,17 @@ public class XML implements ControllerInterface {
         }
     }
 
+    
+    /** 
+     * @param path
+     */
     public void setPath(String path) {
         this.path = path;
     }
+    
+    /** 
+     * @return String
+     */
     public String getPath() {
         return path;
     }

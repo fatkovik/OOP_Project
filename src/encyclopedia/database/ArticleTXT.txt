@@ -1,6 +1,9 @@
 
-<>
-TITLE<nextElem>AUTHOR<nextElem>1000-12-12<nextElem>CONTENT
+
+
+
+
+<>TITLE<nextElem>AUTHOR<nextElem>1000-12-12<nextElem>CONTENT
 <article>
 
 the art of nice<nextElem>benajmin frankflin2<nextElem>1235-12-29<nextElem>Content 2

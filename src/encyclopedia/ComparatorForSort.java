@@ -5,6 +5,11 @@ import java.util.List;
 
 public class ComparatorForSort <T extends Comparable<? super T>> {
 
+    
+    /** 
+     * @param list
+     * @return List<T>
+     */
     public List<T> mergesort(List<T> list) {
 
         if (list.size() <= 1)
@@ -23,6 +28,12 @@ public class ComparatorForSort <T extends Comparable<? super T>> {
         }
     }
 
+    
+    /** 
+     * @param a
+     * @param b
+     * @return List<T>
+     */
     //used by mergesort to do merging
     private List<T> merge(List<T> a, List<T> b) {
         List<T> sortedList = new ArrayList<T>();
