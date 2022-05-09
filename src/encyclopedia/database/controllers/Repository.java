@@ -34,6 +34,10 @@ public class Repository <T extends ControllerInterface>{
      * needed in encyclopedia.XML parses class;
      * @return path
      */
+
+    public Article getArticle(int i) {
+        return (Article) articles.get(i);
+    }
     public String getPath() {
         return controller.getPath();
     }
@@ -59,10 +63,10 @@ public class Repository <T extends ControllerInterface>{
 
     /**
     * Creates and Adds an article to the repository (given all instance variables)
-    * @param nameOfArticle Name of the encyclopedia.Article
-    * @param author Name of the Author
-    * @param publishDate The publication Date
-    * @param content The contents of the encyclopedia.Article
+    * @param _title  Name of the encyclopedia.Article
+    * @param _author Name of the Author
+    * @param _publishDate The publication Date
+    * @param _content The contents of the encyclopedia.Article
     */
     public void appendToRepository(String _title, String _author, String _publishDate, String _content){
         articles.add(new Article(_title, _author, dateParse(_publishDate), _content));

@@ -35,11 +35,4 @@
         <publishDate>1000-12-12</publishDate>
         <content>asd</content>
     </article>
-    <article>
-        <id>5</id>
-        <title>new article</title>
-        <author>uksygbfusrbgf</author>
-        <publishDate>null</publishDate>
-        <content>asdasdasdasd</content>
-    </article>
 </articleSet>
