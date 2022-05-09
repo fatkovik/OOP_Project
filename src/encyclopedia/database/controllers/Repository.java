@@ -1,6 +1,6 @@
-package src.encyclopedia.database.controllers;
+package encyclopedia.database.controllers;
 
-import src.encyclopedia.Article;
+import encyclopedia.Article;
 
 import java.util.ArrayList;
 import java.time.LocalDate;

@@ -1,6 +1,6 @@
-package src.encyclopedia.database.controllers;
+package encyclopedia.database.controllers;
 
-import src.encyclopedia.*;
+import encyclopedia.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;

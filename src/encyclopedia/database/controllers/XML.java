@@ -1,11 +1,11 @@
-package src.encyclopedia.database.controllers;
+package encyclopedia.database.controllers;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
-import src.encyclopedia.Article;
+import encyclopedia.Article;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;

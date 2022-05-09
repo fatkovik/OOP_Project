@@ -8,21 +8,22 @@
 
 # NEW TASKS
 - [ ] encyclopedia.TXT Functionality;
-- [x] Fix Generics.
-- [x] Sep. into packages.
+- [ ] Fix Generics.
+- [ ] Sep. into packages.
 
 # Comments from Varduhi.
 - [ ] GUI - Tariel, Ed
 - [ ] type hierarchy? - should be discussed
 - [ ] serach variation - Ed;
-- [x] by the file, format see if we use txt or xml - Jiro
+- [ ] by the file, format see if we use txt or xml - Jiro
 - [ ] presentation, uml diagram, demo - Ed, Tariel, Jiro
-- [x] fix date and time when creating article. - Jiro
+- [ ] fix date and time when creating article. - Tariel.
 - [ ] edit specific thing - Tariel
 - [ ] generate javadoc pages - Jir
     - [ ] different class pages. and see if it makes sense at all. 
     - [ ] see if api makes sense.
-- [x] fav articles; NEEDS PROPER IMPLEMENTATION, SKELETON ONLY
+- [ ] fav articles - esi heto
+- [ ] user class? ? ete unenaq;
 # EXTEND THIS FURTHER
 
 # Bugs
