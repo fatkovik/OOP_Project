@@ -1,7 +1,7 @@
-package src.encyclopedia.main;
+package encyclopedia.main;
 
-import src.encyclopedia.RepoConsole;
-import src.encyclopedia.gui.EncyclopediaGUI;
+import encyclopedia.RepoConsole;
+import encyclopedia.gui.EncyclopediaGUI;
 
 public class Main {
 
@@ -10,6 +10,5 @@ public class Main {
 //        RepoConsole console = new RepoConsole("./src/encyclopedia/database/ArticleXML.xml");
 //        console.run();
         EncyclopediaGUI test = new EncyclopediaGUI("src/encyclopedia/database/ArticleXML.xml");
-
     }
 }

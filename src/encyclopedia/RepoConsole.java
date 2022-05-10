@@ -1,8 +1,8 @@
-package src.encyclopedia;
+package encyclopedia;
 
-import src.encyclopedia.database.controllers.Repository;
-import src.encyclopedia.database.controllers.XML;
-import src.encyclopedia.database.controllers.TXT;
+import encyclopedia.database.controllers.Repository;
+import encyclopedia.database.controllers.XML;
+import encyclopedia.database.controllers.TXT;
 import java.util.Scanner;
 
 public class RepoConsole {

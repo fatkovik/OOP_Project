@@ -1,7 +1,7 @@
-package src.encyclopedia;
+package encyclopedia;
 
 import java.time.LocalDate;
-import src.encyclopedia.database.controllers.Repository;
+import encyclopedia.database.controllers.Repository;
 
 public class Article{
     private String title;

@@ -1,10 +1,17 @@
-package src.encyclopedia.gui;
+package encyclopedia.gui;
 
+<<<<<<< Updated upstream
 import src.encyclopedia.Article;
 import src.encyclopedia.database.controllers.Repository;
 import src.encyclopedia.database.controllers.TXT;
 import src.encyclopedia.database.controllers.XML;
 import src.encyclopedia.database.controllers.Repository;
+=======
+import encyclopedia.Article;
+import encyclopedia.database.controllers.Repository;
+import encyclopedia.database.controllers.TXT;
+import encyclopedia.database.controllers.XML;
+>>>>>>> Stashed changes
 
 import javax.swing.*;
 import javax.swing.border.Border;

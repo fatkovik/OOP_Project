@@ -11,7 +11,6 @@ import java.util.Comparator;
 public class Repository <T extends ControllerInterface>{
 
     public T controller;
-
     private ArrayList<Article> articles = new ArrayList<Article>();
     /**
      * encyclopedia.Repository Construcor
@@ -60,7 +59,6 @@ public class Repository <T extends ControllerInterface>{
             return LocalDate.now();
         }
     }
-
     /**
     * Creates and Adds an article to the repository (given all instance variables)
     * @param _title  Name of the encyclopedia.Article
@@ -105,7 +103,7 @@ public class Repository <T extends ControllerInterface>{
     /**
      * Modifies the encyclopedia.Article with the given ID and parameters
      * @param index the ID of the article you want modify
-     * @TODO: UPDAT METHOD, ADD OVERLOADS, MAKE IT WOKR WITH ID AND TITLE ONLY AND CHANGE THE GIVEN PARAMETER.
+     * TODO: UPDAT METHOD, ADD OVERLOADS, MAKE IT WOKR WITH ID AND TITLE ONLY AND CHANGE THE GIVEN PARAMETER.
      */
     public void modify (int index, String input) throws IndexOutOfBoundsException  {
         String[] arrOfStr = input.split(",");
@@ -204,5 +202,13 @@ public class Repository <T extends ControllerInterface>{
         });
     }
     //#endregion
+
+    ArrayList<Article> favArticles = new ArrayList<>();
+    XML favController = new XML("encyclopedia/database/FavArticles.xml");
+
+    public void addFavArticles(int id){
+        favArticles.add(this.getArticle(id));
+        favController.writeArticle(favArticles);
+    }
 }
 
