@@ -51,6 +51,7 @@ public class RepoConsole {
         System.out.println();
         System.out.println("To save changes into the file, input  >s<.");
         System.out.println("If you want to end the program, input >q<.");
+        System.out.println("If you want to add favourite article, input >a<.");
         System.out.println("-----------------------");
     }
 
@@ -112,12 +113,27 @@ public class RepoConsole {
                     repo.sortByDate();
                     System.out.println("File Successfully Sorted!");
 
-                } else if (inputLine.equals("se")) {
+                }
+
+                else if (inputLine.equals("se")) {
                     System.out.print("Please Input the Parameter to Search With: >Title< or >Author< ");
                     String searchType = sc.nextLine();
                     System.out.print("Search: ");
                     repo.search(sc.nextLine(),searchType);
                 }
+
+                else if (inputLine.equals("a")) {
+                    repo.print();
+                    System.out.print("Enter id of an Article you want to add to favourites: ");
+                    repo.addFavArticles(sc.nextInt());
+                }
+
+                else if (inputLine.equals("rm")) {
+                    repo.printFav();
+                    System.out.print("Enter id of an Article you want to delete from favourites: ");
+                    repo.rmFavArticles(sc.nextInt());
+                }
+
                 else {
                     System.out.println("Wrong Instructions");
                 }

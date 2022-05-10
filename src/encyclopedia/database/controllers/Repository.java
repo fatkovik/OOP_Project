@@ -133,6 +133,8 @@ public class Repository <T extends ControllerInterface>{
         getArticles().get(index - 1).print();
     }
 
+    //#region Search
+
     /**
      * Searches in the encyclopedia
      * @param input Title or Author to be Found
@@ -164,6 +166,8 @@ public class Repository <T extends ControllerInterface>{
                 System.out.println("Not a Valid Search Type");
         }
     }
+
+    //#endregion
 
     //#region Sorting
 
@@ -203,12 +207,30 @@ public class Repository <T extends ControllerInterface>{
     }
     //#endregion
 
-    ArrayList<Article> favArticles = new ArrayList<>();
-    XML favController = new XML("encyclopedia/database/FavArticles.xml");
+    //#region Favourite Articles
 
-    public void addFavArticles(int id){
-        favArticles.add(this.getArticle(id));
+    ArrayList<Article> favArticles = new ArrayList<>();
+
+    public void addFavArticles(int id) {
+        XML favController = new XML("./src/encyclopedia/database/FavArticles.xml");
+        favArticles.add(this.getArticle(id - 1));
         favController.writeArticle(favArticles);
     }
+
+    public void rmFavArticles(int id) {
+
+        XML favController = new XML("./src/encyclopedia/database/FavArticles.xml");
+        favArticles.remove(id - 1);
+        favController.deleteElements(String.valueOf(id - 1));
+    }
+
+    public void printFav() {
+        for (int i = 0; i < favArticles.size(); i++) {
+            System.out.println("");
+            System.out.println("[" + (i + 1) + "] " + articles.get(i).getAuthor() + " - " + articles.get(i).getTitle());
+        }
+    }
+
+    //#endregion
 }
 
