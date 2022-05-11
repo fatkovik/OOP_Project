@@ -2,23 +2,114 @@
 <articleSet>
     <article>
         <id>0</id>
-        <title>Enter Title</title>
-        <author>Aaron Paul </author>
+        <title>The Plague</title>
+        <author>Albert Camus </author>
         <publishDate>2022-05-11</publishDate>
-        <content>This is a text</content>
+        <content>
+            The Plague (French: La Peste) is a novel by Albert Camus. Published in 1947, it tells the
+            story from the point of view of a narrator of a plague sweeping the French Algerian city of Oran.
+            The narrator remains unknown until the start of the last chapter, chapter 5 of part 5. The novel
+            presents a snapshot of life in Oran as seen through the author's distinctive absurdist point of view.[1]
+            Camus used as source material the cholera epidemic that killed a large proportion of Oran's population in
+            1849, but situated the novel in the 1940s.[2] Oran and its surroundings were struck by disease several
+            times before Camus published his novel. According to an academic study, Oran was decimated by the bubonic
+            plague in 1556 and 1678, but all later outbreaks (in 1921: 185 cases; 1931: 76 cases; and 1944: 95 cases)
+            were very far from the scale of the epidemic described in the novel
+        </content>
     </article>
     <article>
         <id>1</id>
-        <title>Enter Title</title>
-        <author>Enter Author</author>
-        <publishDate>2022-05-11</publishDate>
-        <content>Enter the text</content>
-    </article>
-    <article>
-        <id>2</id>
         <title>Fight Club</title>
         <author>Tyler Durden</author>
         <publishDate>1999-06-11</publishDate>
-        <content>Fight Club is a 1999 American film directed by David Fincher and starring Brad Pitt, Edward Norton, and Helena Bonham Carter. It is based on the 1996 novel of the same name by Chuck Palahniuk. Norton plays the unnamed narrator, who is discontented with his white-collar job. He forms a "fight club" with soap salesman Tyler Durden (Pitt), and becomes embroiled in a relationship with a destitute woman, Marla Singer (Bonham Carter).  Palahniuk's novel was optioned by Fox 2000 Pictures producer Laura Ziskin, who hired Jim Uhls to write the film adaptation. Fincher was selected because of his enthusiasm for the story. He developed the script with Uhls and sought screenwriting advice from the cast and others in the film industry. It was filmed in and around Los Angeles from July to December 1998. He and the cast compared the film to Rebel Without a Cause (1955) and The Graduate (1967), with a theme of conflict between Generation X and the value system of advertising</content>
+        <content>
+            Fight Club is a 1999 American film directed by David Fincher and starring Brad Pitt,
+            Edward Norton, and Helena Bonham Carter. It is based on the 1996 novel of the same name by
+            Chuck Palahniuk. Norton plays the unnamed narrator, who is discontented with his white-collar job.
+            He forms a "fight club" with soap salesman Tyler Durden (Pitt), and becomes embroiled in a relationship
+            with a destitute woman, Marla Singer (Bonham Carter).  Palahniuk's novel was optioned by Fox 2000
+            Pictures producer Laura Ziskin, who hired Jim Uhls to write the film adaptation. Fincher was selected
+            because of his enthusiasm for the story. He developed the script with Uhls and sought screenwriting
+            advice from the cast and others in the film industry. It was filmed in and around Los Angeles from
+            July to December 1998. He and the cast compared the film to Rebel Without a Cause (1955)
+            and The Graduate (1967), with a theme of conflict between Generation X and the value system of
+            advertising
+        </content>
+    </article>
+    <article>
+        <id>2</id>
+        <title>Game of Thrones</title>
+        <author>George R. R. Martin</author>
+        <publishDate>1996-06-01</publishDate>
+        <content>
+            A Song of Ice and Fire is a series of epic fantasy novels by the American novelist and screenwriter
+            George R. R. Martin. He began the first volume of the series, A Game of Thrones, in 1991, and it was
+            published in 1996. Martin, who initially envisioned the series as a trilogy, has published five out of a
+            planned seven volumes. The fifth and most recent volume of the series, A Dance with Dragons, was published
+            in 2011, six years after the publication of the preceding book, A Feast for Crows. He is currently writing
+            the sixth novel, The Winds of Winter. A seventh novel, A Dream of Spring, is planned.
+        </content>
+    </article>
+    <article>
+        <id>3</id>
+        <title>Never Gonna Give You Up</title>
+        <author>Rick Astley</author>
+        <publishDate>1987-07-27</publishDate>
+        <content>
+            We're no strangers to love
+            You know the rules and so do I (do I)
+            A full commitment's what I'm thinking of
+            You wouldn't get this from any other guy
+            I just wanna tell you how I'm feeling
+            Gotta make you understand
+            Never gonna give you up
+            Never gonna let you down
+            Never gonna run around and desert you
+            Never gonna make you cry
+            Never gonna say goodbye
+            Never gonna tell a lie and hurt you
+            We've known each other for so long
+            Your heart's been aching, but you're too shy to say it (say it)
+            Inside, we both know what's been going on (going on)
+            We know the game and we're gonna play it
+            And if you ask me how I'm feeling
+            Don't tell me you're too blind to see
+            Never gonna give you up
+            Never gonna let you down
+            Never gonna run around and desert you
+            Never gonna make you cry
+            Never gonna say goodbye
+            Never gonna tell a lie and hurt you
+            Never gonna give you up
+            Never gonna let you down
+            Never gonna run around and desert you
+            Never gonna make you cry
+            Never gonna say goodbye
+            Never gonna tell a lie and hurt you
+            We've known each other for so long
+            Your heart's been aching, but you're too shy to say it (to say it)
+            Inside, we both know what's been going on (going on)
+            We know the game and we're gonna play it
+            I just wanna tell you how I'm feeling
+            Gotta make you understand
+            Never gonna give you up
+            Never gonna let you down
+            Never gonna run around and desert you
+            Never gonna make you cry
+            Never gonna say goodbye
+            Never gonna tell a lie and hurt you
+            Never gonna give you up
+            Never gonna let you down
+            Never gonna run around and desert you
+            Never gonna make you cry
+            Never gonna say goodbye
+            Never gonna tell a lie and hurt you
+            Never gonna give you up
+            Never gonna let you down
+            Never gonna run around and desert you
+            Never gonna make you cry
+            Never gonna say goodbye
+            Never gonna tell a lie and
+        </content>
     </article>
 </articleSet>

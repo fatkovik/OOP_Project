@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import src.encyclopedia.database.controllers.Repository;
 
 public class Article{
+    
     private String title;
     private LocalDate publishDate;
     private String author;

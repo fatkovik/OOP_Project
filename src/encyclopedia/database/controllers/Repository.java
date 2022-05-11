@@ -112,6 +112,7 @@ public class Repository<T extends ControllerInterface> {
     public void removeArticle(int index) throws IndexOutOfBoundsException {
         articles.remove(index - 1);
         controller.deleteElements(String.valueOf(index - 1));
+        controller.writeArticle(articles);
     }
 
     /**
@@ -155,8 +156,9 @@ public class Repository<T extends ControllerInterface> {
      * @param searchType Title or Author to be Searched in Encyclopedia
      */
     public Article search(String input) {
+        input = input.toLowerCase();
         for (int i = 0; i < getArticles().size(); i++) {
-            if (getArticles().get(i).getTitle().contains(input) || getArticles().get(i).getAuthor().contains(input)) {
+            if (getArticles().get(i).getTitle().toLowerCase().contains(input) || getArticles().get(i).getAuthor().toLowerCase().contains(input)) {
                 System.out.println("\n" +  " Found!");
                 return getArticles().get(i);
             }

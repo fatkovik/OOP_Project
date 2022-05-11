@@ -1,6 +1,7 @@
 package src.encyclopedia.gui;
 
 import src.encyclopedia.Article;
+import src.encyclopedia.RepoConsole;
 import src.encyclopedia.database.controllers.Repository;
 import src.encyclopedia.database.controllers.TXT;
 import src.encyclopedia.database.controllers.XML;
@@ -51,13 +52,13 @@ public class EncyclopediaGUI extends JFrame implements ActionListener {
 
         fileMenu = new JMenu("File");
         editMenu = new JMenu("Edit");
-        helpMenu = new JMenu("Help");
+        helpMenu = new JMenu("Console");
 
         loadItem = new JMenuItem("Load");
         saveItem = new JMenuItem("Save");
         exitItem = new JMenuItem("Exit");
         createItem = new JMenuItem("Create New Article");
-        helpItem = new JMenuItem("Get Instructions");
+        helpItem = new JMenuItem("Run from Console :)");
 
         loadItem.addActionListener(this);
         saveItem.addActionListener(this);
@@ -219,7 +220,7 @@ public class EncyclopediaGUI extends JFrame implements ActionListener {
         for (int i = 0; i < repo.getArticles().size(); i++) {
 
             JLabel title = new JLabel("        " + repo.getArticle(i).getAuthor() + " - " +
-                    repo.getArticle(i).getTitle());
+            repo.getArticle(i).getTitle());
             title.setForeground(Color.white);
             title.setFont(font);
 
@@ -250,7 +251,12 @@ public class EncyclopediaGUI extends JFrame implements ActionListener {
                     ActionListener openListener = new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            ArticleWindow window = new ArticleWindow(repo.getArticle(finalI));
+                            if(finalI == repo.getArticles().size()){
+                                ArticleWindow window = new ArticleWindow(repo.getArticle(finalI - 1));
+                            } else{
+                                ArticleWindow window = new ArticleWindow(repo.getArticle(finalI));
+                            }
+                            
                             options.dispose();
                         }
                     };
@@ -265,7 +271,11 @@ public class EncyclopediaGUI extends JFrame implements ActionListener {
                         @Override
                         public void actionPerformed(ActionEvent e) {
 
-                            repo.removeArticle(size - 1);
+                            if(finalI <= 1){
+                                repo.removeArticle(1);
+                            }else{
+                                repo.removeArticle(size);
+                            }
                             articlesPanel.remove(articleButton);
                             options.dispose();
                             size--;
@@ -320,17 +330,18 @@ public class EncyclopediaGUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        // if (e.getSource() == loadItem) {
-        // System.out.println("*beep boop* you loaded a file");
-        // repo.controller.
-        // }
+        if (e.getSource() == loadItem) {
+            System.out.println("*beep boop* you loaded a file");
+            repo.controller.readArticle();
+        }
         if (e.getSource() == saveItem) {
             System.out.println("*beep boop* you saved a file");
             repo.controller.writeArticle(repo.getArticles());
         }
 
         if (e.getSource() == helpItem) {
-
+            RepoConsole console = new RepoConsole("./src/encyclopedia/database/ArticleXML.xml");
+            console.run();
         }
 
         if (e.getSource() == createItem) {
@@ -417,7 +428,12 @@ public class EncyclopediaGUI extends JFrame implements ActionListener {
                                 @Override
                                 public void actionPerformed(ActionEvent e) {
 
-                                    repo.removeArticle(size - 1);
+                                    if(size <= 1){
+                                        repo.removeArticle(1);
+                                    }else{
+                                        repo.removeArticle(size);
+                                    }
+                                    
                                     articlesPanel.remove(articleButton);
                                     options.dispose();
                                     size--;
