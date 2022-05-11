@@ -12,16 +12,16 @@
 - [x] Sep. into packages.
 
 # Comments from Varduhi.
-- [ ] GUI - Tariel, Ed
-- [ ] type hierarchy? - should be discussed
-- [ ] serach variation - Ed;
+- [x] GUI - Tariel, Ed
+- [x] type hierarchy? - should be discussed
+- [x] serach variation - Ed;
 - [x] by the file, format see if we use txt or xml - Jiro
-- [ ] presentation, uml diagram, demo - Ed, Tariel, Jiro
+- [x] presentation, uml diagram, demo - Ed, Tariel, Jiro
 - [x] fix date and time when creating article. - Jiro
-- [ ] edit specific thing - Tariel
-- [ ] generate javadoc pages - Jir
-    - [ ] different class pages. and see if it makes sense at all. 
-    - [ ] see if api makes sense.
+- [x] edit specific thing - Tariel
+- [x] generate javadoc pages - Jir
+    - [x] different class pages. and see if it makes sense at all. 
+    - [x] see if api makes sense.
 - [x] fav articles; NEEDS PROPER IMPLEMENTATION, SKELETON ONLY
 # EXTEND THIS FURTHER
 

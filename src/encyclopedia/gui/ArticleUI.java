@@ -5,6 +5,7 @@ import java.awt.*;
 
 public class ArticleUI extends JButton {
     private int index;
+    
 
     public ArticleUI (int index) {
         super();
@@ -17,11 +18,16 @@ public class ArticleUI extends JButton {
         icon = new ImageIcon(newimg);
         this.setHorizontalAlignment(LEFT);
         this.setIcon(icon);
-
+    
 
         //this.setBorder(null);
     }
 
+
+    
+    /** 
+     * @return int
+     */
     public int getIndex() {
         return index;
     }

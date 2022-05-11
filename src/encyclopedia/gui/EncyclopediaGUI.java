@@ -5,9 +5,8 @@ import src.encyclopedia.database.controllers.Repository;
 import src.encyclopedia.database.controllers.TXT;
 import src.encyclopedia.database.controllers.XML;
 
-
 import javax.swing.*;
-
+import javax.swing.plaf.DimensionUIResource;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,13 +14,13 @@ import java.awt.event.ActionListener;
 
 import static src.encyclopedia.gui.ArticleWindow.whiteLine;
 
-
 public class EncyclopediaGUI extends JFrame implements ActionListener {
 
     public static final int WIDTH = 700;
     public static final int HEIGHT = 700;
-    public static final Color background = new Color(32, 32,32, 255);
+    public static final Color background = new Color(32, 32, 32, 255);
     Font font = new Font("Verdana", Font.BOLD, 12);
+    public static final Font dateFont = new Font("Verdana", Font.BOLD, 24);
 
     private Repository repo;
     private static int size = 0;
@@ -42,8 +41,11 @@ public class EncyclopediaGUI extends JFrame implements ActionListener {
 
         super("Java Encyclopedia");
         setSize(WIDTH, HEIGHT);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setLayout(new BorderLayout());
+        setResizable(false);
+        setLocation(450, 100);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+       
 
         menuBar = new JMenuBar();
 
@@ -87,7 +89,7 @@ public class EncyclopediaGUI extends JFrame implements ActionListener {
 
 
         // ABOVE PART
-        JPanel abovePart = new JPanel(new FlowLayout());
+        JPanel abovePart = new JPanel(new BorderLayout());
         abovePart.setBackground(background);
         ImageIcon logo = new ImageIcon("src/encyclopedia/gui/preview.png");
         Image image = logo.getImage(); // transform it
@@ -95,15 +97,55 @@ public class EncyclopediaGUI extends JFrame implements ActionListener {
         logo = new ImageIcon(newimg);
 
         JLabel label = new JLabel();
-        label.setText("<html> Repository <br/> </html>");
+        label.setText("<html> Repository <br/>" + path + " </html>");
         label.setFont(new Font("Segoe", Font.BOLD, 20));
         label.setForeground(Color.white);
         label.setIcon(logo);
-        JLabel info = new JLabel( "<html> Path: " + path + "<br/> </html>");
-        info.setForeground(Color.white);
-        info.setSize(20, 20);
-        abovePart.add(label);
-        abovePart.add(info);
+
+        abovePart.add(label, BorderLayout.NORTH);
+       
+
+
+        JTextField searchArea = new JTextField("Search");
+        searchArea.setColumns(50);
+        abovePart.add(searchArea, BorderLayout.WEST);
+        
+        JButton searchConfirm = new JButton("Confirm");
+        searchConfirm.setBackground(background);
+        searchConfirm.setForeground(Color.white);
+        searchConfirm.setBorder(whiteLine);
+        abovePart.add(searchConfirm);
+        ActionListener searchListener = new ActionListener() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (repo.search(searchArea.getText()) != null) {
+                    ArticleWindow newWindow = new ArticleWindow(repo.search(searchArea.getText()));
+                } else {
+                    JFrame errorFrame = new JFrame("Article Not Found!");
+                    errorFrame.setLocationRelativeTo(searchArea);
+                    errorFrame.setSize(320, 100);
+                    errorFrame.setResizable(false);
+                    errorFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    errorFrame.setBackground(background);
+    
+
+                    
+                    JLabel errorText = new JLabel("Article Not Found!");
+                    errorText.setFont(dateFont);
+                    errorText.setBackground(Color.white);
+                    errorFrame.add(errorText);
+                    errorFrame.setVisible(true);
+                }
+                
+                
+            }
+        };
+        
+        searchConfirm.addActionListener(searchListener);
+
+
+
 
         JPanel sortPanel = new JPanel(new GridLayout(1, 2));
 
@@ -173,13 +215,10 @@ public class EncyclopediaGUI extends JFrame implements ActionListener {
         this.setVisible(true);
     }
 
-
-
-    public void createGUI () {
+    public void createGUI() {
         for (int i = 0; i < repo.getArticles().size(); i++) {
 
-
-            JLabel title = new JLabel( "        " + repo.getArticle(i).getAuthor() + " - " +
+            JLabel title = new JLabel("        " + repo.getArticle(i).getAuthor() + " - " +
                     repo.getArticle(i).getTitle());
             title.setForeground(Color.white);
             title.setFont(font);
@@ -196,11 +235,12 @@ public class EncyclopediaGUI extends JFrame implements ActionListener {
                     JFrame options = new JFrame();
                     options.setLocation(50, 50);
                     options.setTitle("Choose What You Want to do");
-                    options.setSize(200, 100);
+                    options.setSize(200, 200);
+                    options.setLocationRelativeTo(options);
+                    options.setResizable(false);
                     options.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    options.setLayout(new GridLayout(2, 1));
+                    options.setLayout(new GridLayout(3, 1));
                     options.setVisible(true);
-
 
                     JButton open = new JButton();
                     JLabel openText = new JLabel("Open");
@@ -235,7 +275,32 @@ public class EncyclopediaGUI extends JFrame implements ActionListener {
                     };
                     remove.addActionListener(removeListener);
 
+                    JButton favorite = new JButton();
+                    JLabel favText = new JLabel("Un/Favorite");
+                    favText.setForeground(Color.white);
+                    favorite.add(favText);
+                    favorite.setBackground(background);
+                    ActionListener favListener = new ActionListener() {
+                       
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
 
+                            System.out.println("Article Added to Favorites!");
+                            if (repo.getFavArticles().contains(repo.getArticle(size - 1))) {
+                                repo.rmFavArticles(size -1);
+                                title.setForeground(Color.white);
+                            } else {
+                                repo.addFavArticles(size - 1);
+                                title.setForeground(Color.yellow);
+                            }
+                            options.dispose();
+
+                            repaint();
+                            revalidate();
+                        }
+                    };
+                    favorite.addActionListener(favListener);
+                    options.add(favorite);
                     options.add(remove);
                     options.add(open);
                 }
@@ -249,12 +314,15 @@ public class EncyclopediaGUI extends JFrame implements ActionListener {
         }
     }
 
+    /**
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 
         // if (e.getSource() == loadItem) {
-        //     System.out.println("*beep boop* you loaded a file");
-        //     repo.controller.
+        // System.out.println("*beep boop* you loaded a file");
+        // repo.controller.
         // }
         if (e.getSource() == saveItem) {
             System.out.println("*beep boop* you saved a file");
@@ -266,46 +334,49 @@ public class EncyclopediaGUI extends JFrame implements ActionListener {
         }
 
         if (e.getSource() == createItem) {
-            
+
             System.out.println("Creating New Article");
 
             JFrame create = new JFrame();
             create.setTitle("Enter The Right Parameters");
-            create.setSize(300, 300);
+            create.setSize(300, 500);
             create.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-            create.setLayout(new GridLayout(2, 1));
+            create.setLayout(new GridLayout(1, 1));
             create.setVisible(true);
+            create.setBackground(background);
+            create.setResizable(false);
+            create.setLocationRelativeTo(this);
 
             JPanel fields = new JPanel(new GridLayout(5, 1));
             fields.setBackground(background);
-
 
             JTextField title = new JTextField("Enter Title");
             JTextField author = new JTextField("Enter Author");
             JTextField date = new JTextField("Enter Publish Date or Leave Empty for Current Date");
             JTextField content = new JTextField("Enter the text");
 
-
             fields.add(title);
             fields.add(author);
             fields.add(date);
             fields.add(content);
 
+            fields.setBackground(background);
             create.add(fields);
 
-
             JButton confirm = new JButton("Confirm");
+            confirm.setBackground(background);
+            confirm.setForeground(Color.white);
             ActionListener confirmListener = new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
 
-                    repo.appendToRepository(new Article(title.getText(), author.getText(), date.getText(), content.getText()));
+                    repo.appendToRepository(
+                            new Article(title.getText(), author.getText(), date.getText(), content.getText()));
 
                     JLabel titleT = new JLabel("        " + repo.getArticle(size).getAuthor() + " - " +
                             repo.getArticle(size).getTitle());
                     titleT.setForeground(Color.white);
                     titleT.setFont(font);
-
 
                     ArticleUI articleButton = new ArticleUI(size);
                     articleButton.setBorder(whiteLine);
@@ -316,11 +387,12 @@ public class EncyclopediaGUI extends JFrame implements ActionListener {
                         public void actionPerformed(ActionEvent e) {
                             JFrame options = new JFrame();
                             options.setTitle("Choose What You Want to do");
-                            options.setSize(200, 100);
+                            options.setSize(200, 200);
                             options.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                            options.setLayout(new GridLayout(2, 1));
+                            options.setLocationRelativeTo(options);
+                            options.setResizable(false);
+                            options.setLayout(new GridLayout(3, 1));
                             options.setVisible(true);
-
 
                             JButton open = new JButton();
                             JLabel openText = new JLabel("Open");
@@ -355,7 +427,32 @@ public class EncyclopediaGUI extends JFrame implements ActionListener {
                             };
                             remove.addActionListener(removeListener);
 
+                            JButton favorite = new JButton();
+                            JLabel favText = new JLabel("Favorite");
+                            favText.setForeground(Color.white);
+                            favorite.add(favText);
+                            favorite.setBackground(background);
+                            ActionListener favListener = new ActionListener() {
+                                @Override
+                                public void actionPerformed(ActionEvent e) {
 
+                                    System.out.println("Article Added to Favorites!");
+                                    if (repo.getFavArticles().contains(repo.getArticle(size - 1))) {
+                                        repo.rmFavArticles(size -1);
+                                        title.setForeground(Color.white);
+                                    } else {
+                                        repo.addFavArticles(size - 1);
+                                        title.setForeground(Color.yellow);
+                                    }
+                                    options.dispose();
+
+                                    repaint();
+                                    revalidate();
+                                }
+                            };
+                            favorite.addActionListener(favListener);
+
+                            options.add(favorite);
                             options.add(remove);
                             options.add(open);
                         }
@@ -372,6 +469,7 @@ public class EncyclopediaGUI extends JFrame implements ActionListener {
             };
             confirm.addActionListener(confirmListener);
             fields.add(confirm);
+
             repaint();
             revalidate();
         }
@@ -381,7 +479,6 @@ public class EncyclopediaGUI extends JFrame implements ActionListener {
         }
 
     }
-
 
     /**
      * @param filePath
@@ -398,5 +495,4 @@ public class EncyclopediaGUI extends JFrame implements ActionListener {
             return false;
         }
     }
-
 }

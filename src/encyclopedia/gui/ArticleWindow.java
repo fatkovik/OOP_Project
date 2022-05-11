@@ -12,8 +12,7 @@ import src.encyclopedia.Article;
 
 public class ArticleWindow extends JFrame {
 
-    public static final Font titleFont = new Font("Verdana", Font.BOLD, 48);
-    public static final Font dateFont = new Font("Verdana", Font.BOLD, 24);
+    public static final Font titleFont = new Font("Verdana", Font.BOLD, 36);
     public static Border whiteLine = new LineBorder(Color.white);
 
     public ArticleWindow(Article article){
@@ -22,14 +21,15 @@ public class ArticleWindow extends JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setSize(690, 420);
         setResizable(false);
+        setLocationRelativeTo(this);
 
-        this.setTitle("Article " + article.getTitle() + " by " + article.getAuthor());
+        this.setTitle("Article " + article.getTitle() + " by " + article.getAuthor() + "  (" + article.getPublishDate() + ")");
         
         JPanel panel = new JPanel();
         panel.setBackground(Color.WHITE);
         panel.setLayout(new BorderLayout());
 
-        JLabel title = new JLabel(article.getTitle());
+        JLabel title = new JLabel(article.getTitle() + "  (" + article.getPublishDate() + ")");
         title.setFont(titleFont);
         title.setForeground(Color.white);
 

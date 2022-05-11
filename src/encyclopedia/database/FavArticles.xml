@@ -2,16 +2,51 @@
 <articleset>
     <article>
         <id>0</id>
-        <title>Bipolar</title>
-        <author>Rabiz</author>
-        <publishDate>1933-01-02</publishDate>
-        <content>Content 2</content>
+        <title>Enter Title</title>
+        <author>Enter Author</author>
+        <publishDate>2022-05-11</publishDate>
+        <content>Enter the text</content>
     </article>
     <article>
         <id>1</id>
-        <title>Bipolar</title>
-        <author>Rabiz</author>
-        <publishDate>1933-01-02</publishDate>
-        <content>Content 2</content>
+        <title>Enter Title</title>
+        <author>Enter Author</author>
+        <publishDate>2022-05-11</publishDate>
+        <content>Enter the text</content>
+    </article>
+    <article>
+        <id>2</id>
+        <title>Enter Title</title>
+        <author>Enter Author</author>
+        <publishDate>2022-05-11</publishDate>
+        <content>Enter the text</content>
+    </article>
+    <article>
+        <id>3</id>
+        <title>Enter Title</title>
+        <author>Enter Author</author>
+        <publishDate>2022-05-11</publishDate>
+        <content>Enter the text</content>
+    </article>
+    <article>
+        <id>4</id>
+        <title>Enter Title</title>
+        <author>Enter Author</author>
+        <publishDate>2022-05-11</publishDate>
+        <content>Enter the text</content>
+    </article>
+    <article>
+        <id>5</id>
+        <title>Enter Title</title>
+        <author>Enter Author</author>
+        <publishDate>2022-05-11</publishDate>
+        <content>Enter the text</content>
+    </article>
+    <article>
+        <id>6</id>
+        <title>Enter Title</title>
+        <author>Enter Author</author>
+        <publishDate>2022-05-11</publishDate>
+        <content>Enter the text</content>
     </article>
 </articleset>
