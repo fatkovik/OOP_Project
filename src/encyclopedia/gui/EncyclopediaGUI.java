@@ -4,26 +4,27 @@ import src.encyclopedia.Article;
 import src.encyclopedia.database.controllers.Repository;
 import src.encyclopedia.database.controllers.TXT;
 import src.encyclopedia.database.controllers.XML;
-import src.encyclopedia.database.controllers.Repository;
+
 
 import javax.swing.*;
-import javax.swing.border.Border;
 
-import org.w3c.dom.Text;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.SocketTimeoutException;
-import java.util.Scanner;
+
+import static src.encyclopedia.gui.ArticleWindow.whiteLine;
+
 
 public class EncyclopediaGUI extends JFrame implements ActionListener {
 
     public static final int WIDTH = 700;
     public static final int HEIGHT = 700;
+    public static final Color background = new Color(32, 32,32, 255);
+    Font font = new Font("Verdana", Font.BOLD, 12);
 
     private Repository repo;
-    private int size;
+    private static int size = 0;
 
     JPanel articlesPanel;
 
@@ -42,7 +43,7 @@ public class EncyclopediaGUI extends JFrame implements ActionListener {
         super("Java Encyclopedia");
         setSize(WIDTH, HEIGHT);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setLayout(new GridLayout());
+        this.setLayout(new BorderLayout());
 
         menuBar = new JMenuBar();
 
@@ -84,61 +85,168 @@ public class EncyclopediaGUI extends JFrame implements ActionListener {
 
         // border
 
-        size = repo.getArticles().size();
 
         // ABOVE PART
-        JPanel abovePart = new JPanel(new GridLayout());
-
+        JPanel abovePart = new JPanel(new FlowLayout());
+        abovePart.setBackground(background);
         ImageIcon logo = new ImageIcon("src/encyclopedia/gui/preview.png");
         Image image = logo.getImage(); // transform it
         Image newimg = image.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
         logo = new ImageIcon(newimg);
 
         JLabel label = new JLabel();
-        label.setText("Repository" + " \n " + size + " Articles");
-        label.setFont(new Font("Segoe", Font.BOLD, 10));
+        label.setText("<html> Repository <br/> </html>");
+        label.setFont(new Font("Segoe", Font.BOLD, 20));
+        label.setForeground(Color.white);
         label.setIcon(logo);
+        JLabel info = new JLabel( "<html> Path: " + path + "<br/> </html>");
+        info.setForeground(Color.white);
+        info.setSize(20, 20);
         abovePart.add(label);
+        abovePart.add(info);
+
+        JPanel sortPanel = new JPanel(new GridLayout(1, 2));
+
 
         // Articles Panel
-        articlesPanel = new JPanel(new GridLayout(20, 1));
-        Border grayline = BorderFactory.createLineBorder(Color.gray, 2);
+        articlesPanel = new JPanel(new GridLayout(20, 5));
+        articlesPanel.setBackground(background);
 
+
+        createGUI();
+        size = repo.getArticles().size();
+
+        JButton sortByAuthor = new JButton("Sort by Author");
+        sortByAuthor.setForeground(Color.WHITE);
+        ActionListener sortAuthListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                repo.sortByAuthor();
+                articlesPanel.removeAll();
+                createGUI();
+                repaint();
+                revalidate();
+            }
+        };
+        sortByAuthor.setBackground(background);
+        sortByAuthor.addActionListener(sortAuthListener);
+        sortPanel.add(sortByAuthor);
+
+        JButton sortByTitle = new JButton("Sort by Title");
+        ActionListener sortTitleListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                repo.sortByTitle();
+                articlesPanel.removeAll();
+                createGUI();
+                repaint();
+                revalidate();
+            }
+        };
+        sortByTitle.setBackground(background);
+        sortByTitle.setForeground(Color.WHITE);
+        sortByTitle.addActionListener(sortTitleListener);
+        sortPanel.add(sortByTitle);
+
+        JButton sortByDate = new JButton("Sort by Date");
+        ActionListener sortDateListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                repo.sortByTitle();
+                articlesPanel.removeAll();
+                createGUI();
+                repaint();
+                revalidate();
+            }
+        };
+        sortByDate.setBackground(background);
+        sortByDate.addActionListener(sortDateListener);
+        sortByDate.setForeground(Color.WHITE);
+        sortPanel.add(sortByDate);
+
+        repaint();
+        revalidate();
+
+        this.add(sortPanel, BorderLayout.SOUTH);
+        this.add(abovePart, BorderLayout.NORTH);
+        this.add(articlesPanel, BorderLayout.CENTER);
+        this.setVisible(true);
+    }
+
+
+
+    public void createGUI () {
         for (int i = 0; i < repo.getArticles().size(); i++) {
-            
-            int newI = i;
 
-            JLabel title = new JLabel(repo.getArticle(i).getAuthor() + " - " + repo.getArticle(i).getTitle() + "                         " +
-             repo.getArticle(i).getPublishDate());
-            
-            // title.setFont(new Font("Arial", Font.BOLD, 20));
-            // title.setHorizontalAlignment(SwingConstants.LEFT);
-            // title.setVerticalAlignment(SwingConstants.CENTER);
-            // title.setBorder(grayline);
-            // title.setSize(700, 20);
-            
+
+            JLabel title = new JLabel( "        " + repo.getArticle(i).getAuthor() + " - " +
+                    repo.getArticle(i).getTitle());
+            title.setForeground(Color.white);
+            title.setFont(font);
 
             ArticleUI articleButton = new ArticleUI(i);
+            articleButton.setBorder(whiteLine);
+
+            int finalI = i;
             ActionListener aListener = new ActionListener() {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    System.out.println("Open Article num " + articleButton.getIndex());
-                    ArticleWindow window = new ArticleWindow(repo.getArticle(newI));
+
+                    JFrame options = new JFrame();
+                    options.setLocation(50, 50);
+                    options.setTitle("Choose What You Want to do");
+                    options.setSize(200, 100);
+                    options.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    options.setLayout(new GridLayout(2, 1));
+                    options.setVisible(true);
+
+
+                    JButton open = new JButton();
+                    JLabel openText = new JLabel("Open");
+                    openText.setForeground(Color.white);
+                    open.add(openText);
+                    open.setBackground(background);
+                    ActionListener openListener = new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            ArticleWindow window = new ArticleWindow(repo.getArticle(finalI));
+                            options.dispose();
+                        }
+                    };
+                    open.addActionListener(openListener);
+
+                    JButton remove = new JButton();
+                    JLabel removeText = new JLabel("Delete");
+                    removeText.setForeground(Color.white);
+                    remove.add(removeText);
+                    remove.setBackground(background);
+                    ActionListener removeListener = new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+
+                            repo.removeArticle(size - 1);
+                            articlesPanel.remove(articleButton);
+                            options.dispose();
+                            size--;
+                            repaint();
+                            revalidate();
+                        }
+                    };
+                    remove.addActionListener(removeListener);
+
+
+                    options.add(remove);
+                    options.add(open);
                 }
 
             };
-            
+
             articleButton.addActionListener(aListener);
             articleButton.add(title);
             articlesPanel.add(articleButton);
-        
-        }
 
-        // this.add(greeting, BorderLayout.NORTH);
-        this.add(abovePart);
-        this.add(articlesPanel, BorderLayout.CENTER);
-        this.setVisible(true);
+        }
     }
 
     @Override
@@ -154,39 +262,116 @@ public class EncyclopediaGUI extends JFrame implements ActionListener {
         }
 
         if (e.getSource() == helpItem) {
-            System.out.println("Here are the instructions");    
-            String text = "";
-            TextAreaDemo demo = new TextAreaDemo();
-            demo.setVisible(true);  
 
-            text += "," + demo.getStory();
-            text += "," + demo.getStory();
-            text += "," + demo.getStory();
-            text += "," + demo.getStory();
-            text += "," + demo.getStory();
         }
 
         if (e.getSource() == createItem) {
             
             System.out.println("Creating New Article");
-            repo.appendToRepository(new Article(createArticleInput()));
-            
-            JLabel title = new JLabel(repo.getArticle(size).getAuthor() + " - " + repo.getArticle(size).getTitle() + repo.getArticle(size).getPublishDate());
-            ArticleUI articleButton = new ArticleUI(size);
-            ActionListener aListener = new ActionListener() {
 
+            JFrame create = new JFrame();
+            create.setTitle("Enter The Right Parameters");
+            create.setSize(300, 300);
+            create.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            create.setLayout(new GridLayout(2, 1));
+            create.setVisible(true);
+
+            JPanel fields = new JPanel(new GridLayout(5, 1));
+            fields.setBackground(background);
+
+
+            JTextField title = new JTextField("Enter Title");
+            JTextField author = new JTextField("Enter Author");
+            JTextField date = new JTextField("Enter Publish Date or Leave Empty for Current Date");
+            JTextField content = new JTextField("Enter the text");
+
+
+            fields.add(title);
+            fields.add(author);
+            fields.add(date);
+            fields.add(content);
+
+            create.add(fields);
+
+
+            JButton confirm = new JButton("Confirm");
+            ActionListener confirmListener = new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    System.out.println("Open Article num" + articleButton.getIndex());
-                    ArticleWindow window = new ArticleWindow(repo.getArticle(size - 1));
-                }
 
+                    repo.appendToRepository(new Article(title.getText(), author.getText(), date.getText(), content.getText()));
+
+                    JLabel titleT = new JLabel("        " + repo.getArticle(size).getAuthor() + " - " +
+                            repo.getArticle(size).getTitle());
+                    titleT.setForeground(Color.white);
+                    titleT.setFont(font);
+
+
+                    ArticleUI articleButton = new ArticleUI(size);
+                    articleButton.setBorder(whiteLine);
+
+                    ActionListener aListener = new ActionListener() {
+
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            JFrame options = new JFrame();
+                            options.setTitle("Choose What You Want to do");
+                            options.setSize(200, 100);
+                            options.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                            options.setLayout(new GridLayout(2, 1));
+                            options.setVisible(true);
+
+
+                            JButton open = new JButton();
+                            JLabel openText = new JLabel("Open");
+                            openText.setForeground(Color.white);
+                            open.add(openText);
+                            open.setBackground(background);
+                            ActionListener openListener = new ActionListener() {
+                                @Override
+                                public void actionPerformed(ActionEvent e) {
+                                    ArticleWindow window = new ArticleWindow(repo.getArticle(size - 1));
+                                    options.dispose();
+                                }
+                            };
+                            open.addActionListener(openListener);
+
+                            JButton remove = new JButton();
+                            JLabel removeText = new JLabel("Delete");
+                            removeText.setForeground(Color.white);
+                            remove.add(removeText);
+                            remove.setBackground(background);
+                            ActionListener removeListener = new ActionListener() {
+                                @Override
+                                public void actionPerformed(ActionEvent e) {
+
+                                    repo.removeArticle(size - 1);
+                                    articlesPanel.remove(articleButton);
+                                    options.dispose();
+                                    size--;
+                                    repaint();
+                                    revalidate();
+                                }
+                            };
+                            remove.addActionListener(removeListener);
+
+
+                            options.add(remove);
+                            options.add(open);
+                        }
+
+                    };
+                    articleButton.add(titleT);
+                    articleButton.addActionListener(aListener);
+                    articlesPanel.add(articleButton);
+                    size++;
+                    create.dispose();
+                    repaint();
+                    revalidate();
+                }
             };
-            articleButton.add(title);
-            articleButton.addActionListener(aListener);
-            articlesPanel.add(articleButton);
-            size++;
-            
+            confirm.addActionListener(confirmListener);
+            fields.add(confirm);
             repaint();
             revalidate();
         }
@@ -197,31 +382,6 @@ public class EncyclopediaGUI extends JFrame implements ActionListener {
 
     }
 
-    private String createArticleInput () {
-        Scanner sc = new Scanner(System.in);
-        String input = "";
-
-        System.out.print("Enter New Title: ");
-        input += sc.nextLine();
-        System.out.print("Enter New Author: ");
-        input += "," + sc.nextLine();
-        System.out.print("Enter New Publication Date (yyyy-mm-dd): ");
-        input += "," + sc.nextLine();
-        System.out.print("Enter New Content: ");
-        input += "," + sc.nextLine();
-
-        return input;
-    }
-
-    private String createArticleInputUI () {
-        String text = "";
-        TextAreaDemo demo = new TextAreaDemo();
-        demo.setVisible(true);   
-        System.out.println(demo.getStory());
-
-        return null;
-        
-    }
 
     /**
      * @param filePath
@@ -239,63 +399,4 @@ public class EncyclopediaGUI extends JFrame implements ActionListener {
         }
     }
 
-    public class TextAreaDemo extends JFrame
-                          implements ActionListener
-    {
-    public static final int WIDTH = 400;
-    public static final int HEIGHT = 200;
-    public static final int NUMBER_OF_LINES = 10;
-    public static final int NUMBER_OF_CHAR = 30;
-
-    private JTextArea story;
-
-
-    public TextAreaDemo( )
-        {
-            setTitle("Text Area Demo");
-            setSize(WIDTH, HEIGHT);
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            setLayout(new GridLayout(2, 1));
-            JPanel storyPanel = new JPanel( );
-            storyPanel.setLayout(new BorderLayout( ));
-            storyPanel.setBackground(Color.WHITE);
-            story = new JTextArea(NUMBER_OF_LINES, NUMBER_OF_CHAR);
-
-            storyPanel.add(story, BorderLayout.CENTER);
-            JLabel storyLabel = new JLabel("Enter Author: ");
-            storyPanel.add(storyLabel, BorderLayout.NORTH);
-
-            add(storyPanel);
-
-            JPanel buttonPanel = new JPanel( );
-            buttonPanel.setLayout(new FlowLayout( ));
-            buttonPanel.setBackground(Color.PINK);
-            JButton actionButton = new JButton("Confirm");
-            actionButton.addActionListener(this);
-            buttonPanel.add(actionButton);
-
-            JButton clearButton = new JButton("Clear");
-            clearButton.addActionListener(this);
-            buttonPanel.add(clearButton);
-
-            add(buttonPanel);
-        }
-
-        public void actionPerformed(ActionEvent e)
-        {
-            String actionCommand = e.getActionCommand( );
-            
-            if (actionCommand.equals("Confirm")) {
-                System.out.println(story.getText());
-            } else {
-                story.setText("");
-            }
-
-            
-        }
-
-        public String getStory(){
-            return this.story.getText();
-        }
-    }
 }
