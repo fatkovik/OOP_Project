@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<articleset>
+    <article>
+        <id>0</id>
+        <title>Bipolar</title>
+        <author>Rabiz</author>
+        <publishDate>1933-01-02</publishDate>
+        <content>Content 2</content>
+    </article>
+    <article>
+        <id>1</id>
+        <title>Bipolar</title>
+        <author>Rabiz</author>
+        <publishDate>1933-01-02</publishDate>
+        <content>Content 2</content>
+    </article>
+</articleset>
