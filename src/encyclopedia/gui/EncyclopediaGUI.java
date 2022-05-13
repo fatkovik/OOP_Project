@@ -296,7 +296,7 @@ public class EncyclopediaGUI extends JFrame implements ActionListener {
                         public void actionPerformed(ActionEvent e) {
 
                             System.out.println("Article Added to Favorites!");
-                            if (repo.getFavArticles().contains(repo.getArticle(size - 1))) {
+                            if (title.getForeground() == Color.yellow) {
                                 repo.rmFavArticles(size -1);
                                 title.setForeground(Color.white);
                             } else {
